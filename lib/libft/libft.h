@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:18:22 by mjameau           #+#    #+#             */
-/*   Updated: 2024/10/29 14:51:43 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/11 11:17:52 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,21 @@ int					ft_print_p(void *addr);
 int					ft_print_xx(unsigned int num, const char format);
 int					ft_print_u(unsigned int n);
 int					ft_print_di(int n);
+
+// GNL
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char				*get_next_line(int fd);
+char				*gnl_shrink_buffer(char *buf, char *line);
+char				*gnl_expand_buffer(char *buf, int fd);
+char				*gnl_newread(int fd);
+
+size_t				gnl_strlen(const char *s);
+char				*gnl_substr(char const *s, unsigned int start, size_t len);
+size_t				gnl_strlcpy(char *dst, const char *src, size_t size);
+int					gnl_strchr_i(const char *s, int c);
+size_t				gnl_strlcat(char *dst, const char *src, size_t size);
 
 #endif

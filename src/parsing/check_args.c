@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 11:06:08 by jchen            ###   ########.fr       */
+/*   Created: 2025/01/11 11:44:26 by jchen             #+#    #+#             */
+/*   Updated: 2025/01/11 11:50:22 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
-void	load_map(t_map *data, char *map)
+bool	is_dir(char *arg)
 {
 	int		fd;
-	char	*line;
+	bool	ret;
 
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
-		check_error(data, 5);
-	line = get_next_line(fd);
-	if (line != 0)
-		data->column = ft_strlen(line) - 1;
-	while (line != NULL)
+	ret = false;
+	fd = open(arg, O_DIRECTORY);
+	if (fd >= 0)
 	{
-		free(line);
-		line = get_next_line(fd);
-		data->line++;
+		close(fd);
+		ret = true;
 	}
-	free(line);
-	close(fd);
-	data->map = malloc_map(data, map);
+	return (ret);
+}
+
+bool	is_good_file(char *arg)
+{
+	int	len;
+
+	len = ft_strlen(arg);
+	if (arg[len - 4] != '.' || arg[len - 3] != 'c' || arg[len - 2] != 'u'
+		|| arg[len - 1] != 'b')
+		return (false);
+	if (arg[len - 4] != '.' || arg[len - 3] != 'x' || arg[len - 2] != 'p'
+		|| arg[len - 1] != 'm')
+		return (false);
+	return (true);
 }

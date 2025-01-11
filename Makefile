@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
+#    By: jchen <jchen@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/11 10:52:49 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/11 10:56:33 by jchen            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ $(NAME): $(OBJS)
 	@cc $(OBJS) $(FLAGS) -o $(NAME)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
 
-$(MLX): 
+$(MLX):
 	@make --no-print-directory -C $(MLX_DIR)
 
 $(LIBFT):

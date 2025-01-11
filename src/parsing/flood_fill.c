@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:53:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 10:21:37 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:01:09 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
-
 
 char	**dup_map(t_map *data, char **map)
 {
@@ -60,9 +59,9 @@ bool	check_fill(t_map *data, char **tmp_map)
 		{
 			if (tmp_map[y][x] == 'C')
 				return (false);
-			if (tmp_map[y][x] == 'E' && (tmp_map[y + 1][x] != 'x'
-				&& tmp_map[y - 1][x] != 'x' && tmp_map[y][x + 1] != 'x'
-				&& tmp_map[y][x - 1] != 'x'))
+			if (tmp_map[y][x] == 'E' && (tmp_map[y + 1][x] != 'x' && tmp_map[y
+					- 1][x] != 'x' && tmp_map[y][x + 1] != 'x' && tmp_map[y][x
+					- 1] != 'x'))
 				return (false);
 		}
 	}
