@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 10:49:09 by rbouquet         ###   ########.fr       */
+/*   Created: 2025/01/11 10:28:54 by rbouquet          #+#    #+#             */
+/*   Updated: 2025/01/11 10:32:28 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube3d.h"
+#include "../../inc/cube3d.h"
 
-int main(int argc, char **argv)
+char    print_error(char *error)
 {
-    if (argc != 2)
-        return(print_errors("PROBLEM_ARGUMENTS"), 1);
-    
+    if (error == "PROBLEM_ARGUMENTS")
+        ft_printf("Not enough or too many arguments.");
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
+#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/10 16:18:59 by palu             ###   ########.fr        #
+#    Updated: 2025/01/11 10:52:49 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ MAGENTA  		= "\033[35m"
 CYAN     		= "\033[36m"
 WHITE    		= "\033[37m"
 
-SRC		=	main.c
+SRC		=	main.c\
+			error.c\
+			flood_fill.c\
+			map.c\
 
 NAME	=	cube3d
 
