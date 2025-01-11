@@ -6,7 +6,7 @@
 #    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/10 15:28:22 by palu             ###   ########.fr        #
+#    Updated: 2025/01/10 16:18:59 by palu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,17 @@ SRC		=	main.c
 
 NAME	=	cube3d
 
-FLAGS	=	-Wall -Wextra -Werror lib/libft.a -std=c99
+FLAGS	=	-Wall -Wextra -Werror lib/libft/libft.a -std=c99
 
 RM		= rm -f
 
-LIB_DIR	=	lib/
+LIB_DIR	=	lib/libft/
 LIBFT 	=	libft.a
 
-SRCS 	= $(addprefix ./srcs/, $(SRC))
+MLX_A = libmlx.a
+MLX_DIR = lib/mlx/
+
+SRCS 	= $(addprefix ./src/, $(SRC))
 OBJS	=	$(SRCS:.c=.o)
 
 
@@ -45,21 +48,25 @@ $(NAME): $(OBJS)
 	@cc $(OBJS) $(FLAGS) -o $(NAME)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
 
+$(MLX): 
+	@make --no-print-directory -C $(MLX_DIR)
+
 $(LIBFT):
 	@echo $(RED)"M"$(YELLOW)"a"$(GREEN)"k"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"g" $(RED)"l"$(YELLOW)"i"$(GREEN)"b"$(CYAN)"f"$(BLUE)"t"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
 	@make --no-print-directory -C $(LIB_DIR)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
 
-
 clean:
 	@echo $(RED)"C"$(YELLOW)"l"$(GREEN)"e"$(CYAN)"a"$(BLUE)"n"$(MAGENTA)"i"$(RED)"n"$(YELLOW)"g" $(GREEN)"m"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"i"$(RED)"s"$(YELLOW)"h"$(GREEN)"e"$(CYAN)"l"$(BLUE)"l"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
 	@rm -f $(OBJS)
 	@make clean --no-print-directory -C $(LIB_DIR)
+	@make clean --no-print-directory -C $(MLX_DIR)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"🧹" $(RESET)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(LIB_DIR)$(LIBFT)
+	@rm -f $(MLX_DIR)$(MLX_A)
 
 re: fclean all
 
