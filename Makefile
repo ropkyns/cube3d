@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jchen <jchen@student.42.fr>                +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/11 10:56:33 by jchen            ###   ########.fr        #
+#    Updated: 2025/01/11 14:38:46 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,9 @@ MAGENTA  		= "\033[35m"
 CYAN     		= "\033[36m"
 WHITE    		= "\033[37m"
 
-SRC		=	main.c\
-			error.c\
-			flood_fill.c\
-			map.c\
+SRC		=	main.c init_all.c parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c
 
-NAME	=	cube3d
+NAME	=	cube3D
 
 FLAGS	=	-Wall -Wextra -Werror lib/libft/libft.a -std=c99
 
@@ -34,16 +31,16 @@ RM		= rm -f
 LIB_DIR	=	lib/libft/
 LIBFT 	=	libft.a
 
-MLX_A = libmlx.a
+MLX = libmlx.a
 MLX_DIR = lib/mlx/
 
 SRCS 	= $(addprefix ./src/, $(SRC))
 OBJS	=	$(SRCS:.c=.o)
 
 
-all: $(LIB_DIR) $(LIBFT) $(NAME)
+all: $(MLX_DIR) $(MLX) $(LIB_DIR) $(LIBFT) $(NAME)
 
-%.o:	%.c
+%.o: %.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS)
@@ -69,7 +66,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(LIB_DIR)$(LIBFT)
-	@rm -f $(MLX_DIR)$(MLX_A)
+	@rm -f $(MLX_DIR)$(MLX)
 
 re: fclean all
 

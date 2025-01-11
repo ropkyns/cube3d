@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 11:03:19 by jchen            ###   ########.fr       */
+/*   Updated: 2025/01/11 14:13:58 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	init_map_struct(t_map *data)
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
-		return (print_errors("PROBLEM_ARGUMENTS"), 1);
+		return (print_error("PROBLEM_ARGUMENTS"), 1);
 }

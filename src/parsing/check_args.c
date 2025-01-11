@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 11:44:26 by jchen             #+#    #+#             */
-/*   Updated: 2025/01/11 11:50:22 by jchen            ###   ########.fr       */
+/*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
+/*   Updated: 2025/01/11 14:09:20 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	is_dir(char *arg)
 	bool	ret;
 
 	ret = false;
-	fd = open(arg, O_DIRECTORY);
+	fd = open(arg, __O_DIRECTORY);
 	if (fd >= 0)
 	{
 		close(fd);
@@ -32,11 +32,8 @@ bool	is_good_file(char *arg)
 	int	len;
 
 	len = ft_strlen(arg);
-	if (arg[len - 4] != '.' || arg[len - 3] != 'c' || arg[len - 2] != 'u'
-		|| arg[len - 1] != 'b')
-		return (false);
-	if (arg[len - 4] != '.' || arg[len - 3] != 'x' || arg[len - 2] != 'p'
-		|| arg[len - 1] != 'm')
-		return (false);
-	return (true);
+	if (ft_strcmp(&arg[len - 4], ".cub") == 0
+		|| ft_strcmp(&arg[len - 4], ".xpm") == 0)
+		return (true);
+	return (false);
 }

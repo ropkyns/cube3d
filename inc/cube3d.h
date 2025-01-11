@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 11:58:57 by jchen            ###   ########.fr       */
+/*   Updated: 2025/01/11 14:09:35 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include "lib/libft/libft.h"
-# include "lib/mlx/mlx.h"
+# include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -72,7 +72,7 @@ bool		is_dir(char *arg);
 bool		is_good_file(char *arg);
 
 // ERROR.C
-char		print_errors(char *error);
+char		print_error(char *error);
 
 // FLOOD_FILL.C
 char		**dup_map(t_map *data, char **map);

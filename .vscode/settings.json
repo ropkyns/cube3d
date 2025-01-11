@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"cube3d.h": "c",
+		"mlx.h": "c",
+		"keysym.h": "c",
+		"fcntl.h": "c",
+		"libft.h": "c",
+		"fcntl-linux.h": "c",
+		"types.h": "c"
+	}
+}
