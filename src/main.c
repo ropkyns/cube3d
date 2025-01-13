@@ -3,26 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 14:13:58 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:21:11 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-void	init_map_struct(t_map *data)
+void	init_map_struct(t_map *map)
 {
-	data->player_x = 0;
-	data->player_y = 0;
-	data->player_nbr = 0;
-	data->column = 0;
-	data->line = 0;
+	// int	i;
+	// i = -1;
+	map->player_x = 0;
+	map->player_y = 0;
+	map->player_nbr = 0;
+	map->column_map = 0;
+	map->line_map = 0;
+	// while (++i < 5)
+	// {
+	// 	map->img[i].mlx_img = NULL;
+	// 	map->img[i].path = NULL;
+	// }
 }
 
 int	main(int argc, char **argv)
 {
+	int		fd;
+	t_map	map;
+
+	init_map_struct(&map);
 	if (argc != 2)
 		return (print_error("PROBLEM_ARGUMENTS"), 1);
+	if (!test_file(argv[1]))
+		return (1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd <= 0)
+		return (ft_printf("Error\nFailed to open file\n"), 1);
 }

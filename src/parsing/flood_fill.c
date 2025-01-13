@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:53:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 14:01:22 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/13 09:23:44 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	**dup_map(t_map *data, char **map)
 	char	**tmp_map;
 	int		i;
 
-	tmp_map = malloc((data->line + 1) * sizeof(char *));
+	tmp_map = malloc((data->line_map + 1) * sizeof(char *));
 	if (!tmp_map)
 		check_error(data, 1);
 	i = -1;
-	while (++i < data->line)
+	while (++i < data->line_map)
 	{
 		tmp_map[i] = ft_strdup(map[i]);
 		if (!tmp_map)
@@ -36,7 +36,7 @@ char	**dup_map(t_map *data, char **map)
 
 void	fill(t_map *data, char **map, int y, int x)
 {
-	if (y < 0 || y > data->line || x < 0 || x > data->column
+	if (y < 0 || y > data->line_map || x < 0 || x > data->column_map
 		|| (map[y][x] != '0' && map[y][x] != 'C' && map[y][x] != 'P'))
 		return ;
 	map[y][x] = 'x';
@@ -51,17 +51,17 @@ bool	check_fill(t_map *data, char **tmp_map)
 	int	x;
 	int	y;
 
-	y = data->line;
+	y = data->line_map;
 	while (y--)
 	{
-		x = data->column;
+		x = data->column_map;
 		while (x--)
 		{
 			if (tmp_map[y][x] == 'C')
 				return (false);
-			if (tmp_map[y][x] == 'E' && (tmp_map[y + 1][x] != 'x'
-				&& tmp_map[y - 1][x] != 'x' && tmp_map[y][x + 1] != 'x'
-				&& tmp_map[y][x - 1] != 'x'))
+			if (tmp_map[y][x] == 'E' && (tmp_map[y + 1][x] != 'x' && tmp_map[y
+					- 1][x] != 'x' && tmp_map[y][x + 1] != 'x' && tmp_map[y][x
+					- 1] != 'x'))
 				return (false);
 		}
 	}

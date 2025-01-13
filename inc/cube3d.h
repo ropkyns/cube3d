@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/11 14:09:35 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/13 09:37:51 by jchen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_map
 {
 	char	**map;
 
-	int		line;
-	int		column;
+	int		line_map;
+	int		column_map;
 	int		player_nbr;
 
 	void	*wall;
@@ -70,6 +70,7 @@ typedef struct global
 // CHECK_ARGS.C
 bool		is_dir(char *arg);
 bool		is_good_file(char *arg);
+int			test_file(char *argv);
 
 // ERROR.C
 char		print_error(char *error);
