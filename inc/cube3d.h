@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 12:23:04 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:38:45 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@
 # define S 115
 # define RIGHT 65361
 # define LEFT 65363
+
+enum		e_error
+{
+	PROBLEM_ARGUMENTS,
+	OPEN_FAILED,
+	INVALID_CHARACTER_ON_MAP,
+	INVALID_INFO,
+};
 
 typedef struct s_win
 {
@@ -73,7 +81,7 @@ bool		is_good_file(char *arg);
 int			test_file(char *argv);
 
 // ERROR.C
-char		print_error(char *error);
+char		print_error(int *error);
 
 // FLOOD_FILL.C
 char		**dup_map(t_map *data, char **map);
@@ -84,9 +92,16 @@ void		flood_fill(t_map *data);
 // MAP.C
 void		load_map(t_map *data, char *map);
 
-// WALL_ERROR.C
+// UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
+
+// WALL_ERROR.C
+bool		check_column(char **column, int y, int x, int size_y);
+bool		vertical_check(t_map *map, int y, int x);
+bool		check_line(t_map *map, char *line, int x);
+bool		horizontal_check(t_map *map, int y, int x);
+bool		ft_wall_error(t_map *map);
 
 // MAIN.C
 void		init_map_struct(t_map *data);

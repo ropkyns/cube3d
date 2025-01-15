@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:14 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 12:35:28 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:39:17 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	check_column(char **column, int y, int x, int size_y)
 		if (y == 0 && !is_valid_char(column[y][x], "1 "))
 			return (false);
 		if (!is_valid_char(column[y][x], "10NSEW"))
-			return (print_error("INVALID_CHARACTER"), 1);
+			return (print_error(INVALID_CHARACTER_ON_MAP), 1);
 		if (is_space(column[y][x]) == true)
 		{
 			if (y > 0 && column[y - 1][x] != '1')
@@ -55,7 +55,7 @@ bool	check_line(t_map *map, char *line, int x)
 		if (x == 0 && !is_valid_char(line[x], "1 "))
 			return (false);
 		if (!is_valid_char(line[x], "10NSEW "))
-			return (print_error("INVALID_CHARACTER"), 1);
+			return (print_error(INVALID_CHARACTER_ON_MAP), 1);
 		if (line[x] == ' ')
 		{
 			if (x > 0 && line[x - 1] != '1')
