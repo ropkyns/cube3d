@@ -3,40 +3,44 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
+#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/15 13:48:18 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/15 14:17:44 by palu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-RESET			= "\033[0m"
-BLACK    		= "\033[30m"
-RED      		= "\033[31m"
-GREEN    		= "\033[32m"
-YELLOW   		= "\033[33m"
-BLUE     		= "\033[34m"
-MAGENTA  		= "\033[35m"
-CYAN     		= "\033[36m"
-WHITE    		= "\033[37m"
+RESET		= "\033[0m"
+BLACK		= "\033[30m"
+RED			= "\033[31m"
+GREEN		= "\033[32m"
+YELLOW		= "\033[33m"
+BLUE		= "\033[34m"
+MAGENTA		= "\033[35m"
+CYAN		= "\033[36m"
+WHITE		= "\033[37m"
 
-SRC		=	main.c init_all.c \
-			parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c parsing/utils.c parsing/wall_error.c \
+SRC			=	main.c init_all.c \
+				parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c \
+				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
 
-NAME	=	cube3D
+NAME		=	cube3D
 
-FLAGS	=	-Wall -Wextra -Werror lib/libft/libft.a -std=c99
+FLAGS		=	-Wall -Wextra -Werror lib/libft/libft.a -std=c99
 
-RM		= rm -f
+RM			= rm -f
 
-LIB_DIR	=	lib/libft/
-LIBFT 	=	libft.a
+LIB_DIR		=	lib/libft/
+LIBFT		=	libft.a
 
-MLX = libmlx.a
-MLX_DIR = lib/mlx/
+MLX_PATH	=	mlx_linux/
+MLX_NAME	=	libmlx.a
+MLX			=	$(MLX_PATH)$(MLX_NAME)
 
-SRCS 	= $(addprefix ./src/, $(SRC))
-OBJS	=	$(SRCS:.c=.o)
+SILENT		=	> /dev/null 2>&1
+
+SRCS		= $(addprefix ./src/, $(SRC))
+OBJS		=	$(SRCS:.c=.o)
 
 
 all: $(MLX_DIR) $(MLX) $(LIB_DIR) $(LIBFT) $(NAME)
@@ -50,7 +54,11 @@ $(NAME): $(OBJS)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
 
 $(MLX):
-	@make --no-print-directory -C $(MLX_DIR)
+	@echo "$(BLUE)Making MiniLibx..."
+	@echo "$(BLUE)Cloning 'mlx' from https://github.com/42Paris/minilibx-linux..."
+	@git clone git@github.com:42Paris/minilibx-linux.git mlx_linux $(SILENT)
+	@echo "$(BLUE)Compiling MiniLibx..."
+	@make -sC $(MLX_PATH) $(SILENT)
 
 $(LIBFT):
 	@echo $(RED)"M"$(YELLOW)"a"$(GREEN)"k"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"g" $(RED)"l"$(YELLOW)"i"$(GREEN)"b"$(CYAN)"f"$(BLUE)"t"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
@@ -58,16 +66,18 @@ $(LIBFT):
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
 
 clean:
-	@echo $(RED)"C"$(YELLOW)"l"$(GREEN)"e"$(CYAN)"a"$(BLUE)"n"$(MAGENTA)"i"$(RED)"n"$(YELLOW)"g" $(GREEN)"m"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"i"$(RED)"s"$(YELLOW)"h"$(GREEN)"e"$(CYAN)"l"$(BLUE)"l"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
-	@rm -f $(OBJS)
-	@make clean --no-print-directory -C $(LIB_DIR)
-	@make clean --no-print-directory -C $(MLX_DIR)
-	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"🧹" $(RESET)
+	@echo "$(GRAY)Removing .o object files..."
+	@rm -rf $(OBJ_PATH) $(SILENT)
+	@make clean -C $(MLX_PATH) $(SILENT)
+	@make clean -C $(LIBFT_PATH) $(SILENT)
+	@echo "$(GRAY).o object files removed!"
 
-fclean: clean
+fclean:	clean
+	@echo "$(GRAY)Removing $(NAME)..."
+	@rm -rf $(MLX_PATH)
 	@rm -f $(NAME)
-	@rm -f $(LIB_DIR)$(LIBFT)
-	@rm -f $(MLX_DIR)$(MLX)
+	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+	@echo "$(YELLOW)\n\o\ All created files have been removed! /o/\n"
 
 re: fclean all
 

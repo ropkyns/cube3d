@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 14:24:14 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:30:54 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ typedef struct s_map
 	int		player_direction_y;
 	int		next_x;
 	int		next_y;
+
+	char	*no_path;
+	char	*so_path;
+	char	*ea_path;
+	char	*we_path;
+	int		*c_color;
+	int		*f_color;
 
 }			t_map;
 
