@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 13:38:45 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:54:04 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ enum		e_error
 	INVALID_INFO,
 };
 
+enum		e_img
+{
+	WALL_N,
+	WALL_S,
+	WALL_W,
+	WALL_E,
+	// FLOOR,
+	// CEILING,
+};
+
 typedef struct s_win
 {
 	void	*mlx_ptr;
@@ -53,12 +63,12 @@ typedef struct s_map
 	int		column_map;
 	int		player_nbr;
 
-	void	*wall;
-	void	*floor;
-	void	*playern;
-	void	*players;
-	void	*playere;
-	void	*playerw;
+	// void	*wall;
+	// void	*floor;
+	// void	*playern;
+	// void	*players;
+	// void	*playere;
+	// void	*playerw;
 
 	int		player_x;
 	int		player_y;
@@ -83,12 +93,6 @@ int			test_file(char *argv);
 // ERROR.C
 char		print_error(int *error);
 
-// FLOOD_FILL.C
-char		**dup_map(t_map *data, char **map);
-void		fill(t_map *data, char **map, int y, int x);
-bool		check_fill(t_map *data, char **tmp_map);
-void		flood_fill(t_map *data);
-
 // MAP.C
 void		load_map(t_map *data, char *map);
 
@@ -103,7 +107,9 @@ bool		check_line(t_map *map, char *line, int x);
 bool		horizontal_check(t_map *map, int y, int x);
 bool		ft_wall_error(t_map *map);
 
-// MAIN.C
+// INIT_ALL.C
 void		init_map_struct(t_map *data);
+
+// MAIN.C
 
 #endif

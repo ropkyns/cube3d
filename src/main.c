@@ -6,27 +6,11 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 12:15:02 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:49:05 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-void	init_map_struct(t_map *map)
-{
-	// int	i;
-	// i = -1;
-	map->player_x = 0;
-	map->player_y = 0;
-	map->player_nbr = 0;
-	map->column_map = 0;
-	map->line_map = 0;
-	// while (++i < 5)
-	// {
-	// 	map->img[i].mlx_img = NULL;
-	// 	map->img[i].path = NULL;
-	// }
-}
 
 int	main(int argc, char **argv)
 {

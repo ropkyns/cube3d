@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
+#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/11 14:38:46 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/15 13:48:18 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ MAGENTA  		= "\033[35m"
 CYAN     		= "\033[36m"
 WHITE    		= "\033[37m"
 
-SRC		=	main.c init_all.c parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c
+SRC		=	main.c init_all.c \
+			parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c parsing/utils.c parsing/wall_error.c \
 
 NAME	=	cube3D
 
