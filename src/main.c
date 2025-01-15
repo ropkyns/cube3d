@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/13 10:21:11 by jchen            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:15:02 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int	main(int argc, char **argv)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
-		return (ft_printf("Error\nFailed to open file\n"), 1);
+		return (print_error("OPEN_FAILED"), 1);
 }

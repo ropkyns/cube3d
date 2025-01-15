@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:53:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/13 09:23:44 by jchen            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:31:49 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	flood_fill(t_map *data)
 {
 	char	**tmp_map;
 
-	tmp_map = dup_map(data, data->map);
+	tmp_map = dup_map(data, data->map_tab);
 	if (!tmp_map)
 		check_error(data, 1);
 	fill(data, tmp_map, data->player_y, data->player_x);

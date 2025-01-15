@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/13 09:37:51 by jchen            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:23:04 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_win
 
 typedef struct s_map
 {
-	char	**map;
+	char	**map_tab;
 
 	int		line_map;
 	int		column_map;
@@ -83,6 +83,10 @@ void		flood_fill(t_map *data);
 
 // MAP.C
 void		load_map(t_map *data, char *map);
+
+// WALL_ERROR.C
+bool		is_valid_char(char c, char *valid_char);
+bool		is_space(char c);
 
 // MAIN.C
 void		init_map_struct(t_map *data);
