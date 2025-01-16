@@ -6,7 +6,7 @@
 /*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/15 14:30:54 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/16 18:32:46 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ typedef struct s_map
 	char	*so_path;
 	char	*ea_path;
 	char	*we_path;
-	int		*c_color;
-	int		*f_color;
+	int		*c_code;
+	int		*f_code;
 
 }			t_map;
 
@@ -108,6 +108,8 @@ void		load_map(t_map *data, char *map);
 // UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
+int			ft_strlen_cube3d(char *s);
+void		free_tab(char **tab);
 
 // WALL_ERROR.C
 bool		check_column(char **column, int y, int x, int size_y);
@@ -118,6 +120,11 @@ bool		ft_wall_error(t_map *map);
 
 // INIT_ALL.C
 void		init_map_struct(t_map *data);
+
+// READ_CUB.C
+bool	read_file(t_map *map, char *map_path);
+void	get_map(t_map *map, char *path, int fd);
+char	**maploc(int fd, int count_line, t_map *map);
 
 // MAIN.C
 
