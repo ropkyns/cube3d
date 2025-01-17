@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/15 14:17:44 by palu             ###   ########.fr        #
+#    Updated: 2025/01/17 10:07:44 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RM			= rm -f
 LIB_DIR		=	lib/libft/
 LIBFT		=	libft.a
 
-MLX_PATH	=	mlx_linux/
+MLX_PATH	=	lib/mlx_linux/
 MLX_NAME	=	libmlx.a
 MLX			=	$(MLX_PATH)$(MLX_NAME)
 
@@ -43,7 +43,7 @@ SRCS		= $(addprefix ./src/, $(SRC))
 OBJS		=	$(SRCS:.c=.o)
 
 
-all: $(MLX_DIR) $(MLX) $(LIB_DIR) $(LIBFT) $(NAME)
+all: $(MLX) $(LIB_DIR) $(LIBFT) $(NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -54,10 +54,10 @@ $(NAME): $(OBJS)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
 
 $(MLX):
-	@echo "$(BLUE)Making MiniLibx..."
-	@echo "$(BLUE)Cloning 'mlx' from https://github.com/42Paris/minilibx-linux..."
-	@git clone git@github.com:42Paris/minilibx-linux.git mlx_linux $(SILENT)
-	@echo "$(BLUE)Compiling MiniLibx..."
+	@echo $(BLUE)"Making MiniLibx..."
+	@echo $(BLUE)"Cloning 'mlx' from https://github.com/42Paris/minilibx-linux..."
+	@git clone https://github.com/42Paris/minilibx-linux.git lib/mlx_linux $(SILENT)
+	@echo $(BLUE)"Compiling MiniLibx..."
 	@make -sC $(MLX_PATH) $(SILENT)
 
 $(LIBFT):

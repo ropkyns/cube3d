@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/16 18:32:46 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/17 10:04:28 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUBE3D_H
 
 # include "../lib/libft/libft.h"
-# include "../lib/mlx/mlx.h"
+# include "../lib/mlx_linux/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -61,7 +61,6 @@ typedef struct s_map
 
 	int		line_map;
 	int		column_map;
-	int		player_nbr;
 
 	// void	*wall;
 	// void	*floor;
@@ -122,9 +121,9 @@ bool		ft_wall_error(t_map *map);
 void		init_map_struct(t_map *data);
 
 // READ_CUB.C
-bool	read_file(t_map *map, char *map_path);
-void	get_map(t_map *map, char *path, int fd);
-char	**maploc(int fd, int count_line, t_map *map);
+bool		read_file(t_map *map, char *map_path);
+void		get_map(t_map *map, char *path, int fd);
+char		**maploc(int fd, int count_line, t_map *map);
 
 // MAIN.C
 

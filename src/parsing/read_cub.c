@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/01/16 18:38:11 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/17 09:32:18 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	get_path(int fd, char *direction, char *path)
 	return (true);
 }
 
-static bool	get_get_color_code(int fd, char *direction, int *code)
+static bool	get_color_code(int fd, char *direction, int *code)
 {
 	char	*line;
 	char	*color;
