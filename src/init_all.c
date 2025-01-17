@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/15 13:49:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/17 09:54:01 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_map_struct(t_map *map)
 	// i = -1;
 	map->player_x = 0;
 	map->player_y = 0;
-	map->player_nbr = 0;
 	map->column_map = 0;
 	map->line_map = 0;
 	// while (++i < 5)

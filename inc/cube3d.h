@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 10:04:28 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:14:13 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_map
 	int		player_y;
 	int		player_direction_x;
 	int		player_direction_y;
+	char	player_direction;
 	int		next_x;
 	int		next_y;
 
@@ -102,12 +103,17 @@ int			test_file(char *argv);
 char		print_error(int *error);
 
 // MAP.C
-void		load_map(t_map *data, char *map);
+void		start_player_pos(t_map *map, char direction, int i, int j);
+void		map_size(t_map *map, char **array, int i, int j);
+
+// READ_CUB.C
+bool		read_file(t_map *map, char *map_path);
+void		get_map(t_map *map, char *path, int fd);
+char		**maploc(int fd, int count_line, t_map *map);
 
 // UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
-int			ft_strlen_cube3d(char *s);
 void		free_tab(char **tab);
 
 // WALL_ERROR.C
@@ -119,11 +125,6 @@ bool		ft_wall_error(t_map *map);
 
 // INIT_ALL.C
 void		init_map_struct(t_map *data);
-
-// READ_CUB.C
-bool		read_file(t_map *map, char *map_path);
-void		get_map(t_map *map, char *path, int fd);
-char		**maploc(int fd, int count_line, t_map *map);
 
 // MAIN.C
 

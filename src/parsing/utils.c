@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/16 18:24:28 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/17 10:14:08 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@ bool	is_space(char c)
 	if ((c && (c >= 9 && c <= 13)) || (c == ' '))
 		return (true);
 	return (false);
-}
-
-int	ft_strlen_cube3d(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s && s[i] && s[i] != '\n')
-		i++;
-	return (i);
 }
 
 void	free_tab(char **tab)
