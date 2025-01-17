@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 10:14:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:35:15 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ bool	is_valid_char(char c, char *valid_char)
 	while (valid_char[i])
 	{
 		if (c == valid_char[i])
-			return (false);
+			return (true);
 		i++;
 	}
-	return (true);
+	return (false);
 }
 
 bool	is_space(char c)

@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/17 10:07:44 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/17 10:12:42 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,18 +66,18 @@ $(LIBFT):
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
 
 clean:
-	@echo "$(GRAY)Removing .o object files..."
+	@echo $(RED")Removing .o object files..."
 	@rm -rf $(OBJ_PATH) $(SILENT)
 	@make clean -C $(MLX_PATH) $(SILENT)
 	@make clean -C $(LIBFT_PATH) $(SILENT)
-	@echo "$(GRAY).o object files removed!"
+	@echo $(RED)".o object files removed!"
 
 fclean:	clean
-	@echo "$(GRAY)Removing $(NAME)..."
+	@echo $(RED)"Removing $(NAME)..."
 	@rm -rf $(MLX_PATH)
 	@rm -f $(NAME)
 	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
-	@echo "$(YELLOW)\n\o\ All created files have been removed! /o/\n"
+	@echo $(RED)"\n\o\ All created files have been removed! /o/\n"
 
 re: fclean all
 
