@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/01/17 09:32:18 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:33:02 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ bool	get_map(t_map *map, char *path, int fd)
 
 bool	read_file(t_map *map, char *map_path)
 {
-	int		fd;
-	int		i;
+	int	fd;
+	int	i;
 
 	fd = open(map_path, O_RDONLY);
 	if (!get_path(fd, "NO ", map->no_path))

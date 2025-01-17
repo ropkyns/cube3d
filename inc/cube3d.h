@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 11:09:06 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:57:47 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ enum		e_error
 	OPEN_FAILED,
 	INVALID_CHARACTER_ON_MAP,
 	INVALID_INFO,
+	INCORRECT_PLAYER,
+	ERROR_MALLOC,
 };
 
 enum		e_img
@@ -61,6 +63,8 @@ typedef struct s_map
 
 	int		line_map;
 	int		column_map;
+	int		height_map;
+	int		lenght_map;
 
 	// void	*wall;
 	// void	*floor;
@@ -100,7 +104,7 @@ bool		is_good_file(char *arg);
 int			test_file(char *argv);
 
 // ERROR.C
-int			print_error(int error);
+void		print_error(int error);
 
 // MAP.C
 void		start_player_pos(t_map *map, char direction, int i, int j);

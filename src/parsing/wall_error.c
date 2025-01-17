@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:14 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 10:41:42 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:57:27 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	vertical_check(t_map *map, int y, int x)
 {
 	while (map->map_tab[y][x])
 	{
-		if (!check_column(map->map_tab, y, x, map->column_map))
+		if (!check_column(map->map_tab, y, x, map->height_map))
 			return (false);
 		x++;
 	}
