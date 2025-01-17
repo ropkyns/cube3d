@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/17 11:15:07 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/17 11:36:21 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,17 @@ SRC			=	main.c init_all.c \
 
 NAME		=	cube3D
 
-FLAGS		=	-Wall -Wextra -Werror lib/libft/libft.a -std=c99
-
 RM			= rm -f
 
-LIB_DIR		=	lib/libft/
-LIBFT		=	libft.a
+LIBFT_PATH		=	lib/libft/
+LIBFT_NAME		=	libft.a
+LIBFT			=	$(LIBFT_PATH)$(LIBFT_NAME)
 
 MLX_PATH	=	lib/mlx_linux/
 MLX_NAME	=	libmlx.a
 MLX			=	$(MLX_PATH)$(MLX_NAME)
+
+FLAGS		=	-Wall -Wextra -Werror $(LIBFT) $(MLX) -std=c99
 
 SILENT		=	> /dev/null 2>&1
 
@@ -43,7 +44,7 @@ SRCS		= $(addprefix ./src/, $(SRC))
 OBJS		=	$(SRCS:.c=.o)
 
 
-all: $(MLX) $(LIB_DIR) $(LIBFT) $(NAME)
+all: $(MLX) $(LIBFT) $(NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -62,7 +63,7 @@ $(MLX):
 
 $(LIBFT):
 	@echo $(RED)"M"$(YELLOW)"a"$(GREEN)"k"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"g" $(RED)"l"$(YELLOW)"i"$(GREEN)"b"$(CYAN)"f"$(BLUE)"t"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
-	@make --no-print-directory -C $(LIB_DIR)
+	@make --no-print-directory -C $(LIBFT_PATH)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
 
 clean:
