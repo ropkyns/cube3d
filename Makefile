@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
+#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/17 10:12:42 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/17 11:15:07 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CYAN		= "\033[36m"
 WHITE		= "\033[37m"
 
 SRC			=	main.c init_all.c \
-				parsing/error.c parsing/flood_fill.c parsing/map.c parsing/check_args.c \
+				parsing/error.c parsing/map.c parsing/check_args.c \
 				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
 
 NAME		=	cube3D
@@ -66,7 +66,7 @@ $(LIBFT):
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
 
 clean:
-	@echo $(RED")Removing .o object files..."
+	@echo $(RED)"Removing .o object files..."
 	@rm -rf $(OBJ_PATH) $(SILENT)
 	@make clean -C $(MLX_PATH) $(SILENT)
 	@make clean -C $(LIBFT_PATH) $(SILENT)

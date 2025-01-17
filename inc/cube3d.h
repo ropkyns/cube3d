@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 10:14:13 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:09:06 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool		is_good_file(char *arg);
 int			test_file(char *argv);
 
 // ERROR.C
-char		print_error(int *error);
+int			print_error(int error);
 
 // MAP.C
 void		start_player_pos(t_map *map, char direction, int i, int j);
@@ -108,7 +108,7 @@ void		map_size(t_map *map, char **array, int i, int j);
 
 // READ_CUB.C
 bool		read_file(t_map *map, char *map_path);
-void		get_map(t_map *map, char *path, int fd);
+bool		get_map(t_map *map, char *path, int fd);
 char		**maploc(int fd, int count_line, t_map *map);
 
 // UTILS.C
