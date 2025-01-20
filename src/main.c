@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 10:27:38 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:21:18 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	int		fd;
-	t_map	map;
+	int			fd;
+	t_global	*global;
+	t_map		map;
 
 	init_map_struct(&map);
 	if (argc != 2)
@@ -26,3 +27,24 @@ int	main(int argc, char **argv)
 	if (fd <= 0)
 		return (print_error(OPEN_FAILED), 1);
 }
+
+// static void	calloc_global_struct(t_global **global_data)
+// {
+// 	*global_data = ft_calloc(1, sizeof(t_global));
+// 	if (!*global_data)
+// 		return (perror("error, global struct calloc failed"));
+// }
+
+// int	main(int argc, char **argv)
+// {
+// 	t_global	*global;
+
+// 	(void)argc;
+// 	(void)argv;
+// 	calloc_global_struct(&global);
+// 	global->win->lenght_win = 1920;
+// 	global->win->height_win = 1080;
+// 	init_mlx(global);
+// 	mlx_loop(global->win->mlx_ptr);
+// 	return (0);
+// }

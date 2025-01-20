@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 13:57:47 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:21:08 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ enum		e_error
 	INVALID_INFO,
 	INCORRECT_PLAYER,
 	ERROR_MALLOC,
+	ERROR_MLX,
 };
 
 enum		e_img
@@ -55,6 +56,8 @@ typedef struct s_win
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
+	int		height_win;
+	int		lenght_win;
 }			t_win;
 
 typedef struct s_map
@@ -90,11 +93,12 @@ typedef struct s_map
 
 }			t_map;
 
-typedef struct global
+typedef struct s_global
 {
 	char	*line;
 	char	*arg;
 	t_map	*map;
+	t_win	*win;
 
 }			t_global;
 
@@ -108,7 +112,9 @@ void		print_error(int error);
 
 // MAP.C
 void		start_player_pos(t_map *map, char direction, int i, int j);
-void		map_size(t_map *map, char **array, int i, int j);
+bool		map_size(t_map *map, char **array, int i, int j);
+bool		ft_resize_map(t_map *map);
+char		*ft_resize_line(char *map, int size);
 
 // READ_CUB.C
 bool		read_file(t_map *map, char *map_path);
@@ -129,6 +135,7 @@ bool		ft_wall_error(t_map *map);
 
 // INIT_ALL.C
 void		init_map_struct(t_map *data);
+void		init_mlx(t_global *data);
 
 // MAIN.C
 

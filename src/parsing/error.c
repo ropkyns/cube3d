@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:28:54 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/17 13:55:41 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:00:29 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ void	print_error(int error)
 		ft_putstr_fd("Error\nIncorrect number of player\n", 2);
 	else if (error == ERROR_MALLOC)
 		ft_putstr_fd("Error\nError Malloc\n", 2);
+	else if (error == ERROR_MLX)
+		ft_putstr_fd("Error\nError in MLX\n", 2);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
+#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/17 11:36:21 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/20 10:40:31 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,30 +19,40 @@ BLUE		= "\033[34m"
 MAGENTA		= "\033[35m"
 CYAN		= "\033[36m"
 WHITE		= "\033[37m"
-
-SRC			=	main.c init_all.c \
-				parsing/error.c parsing/map.c parsing/check_args.c \
-				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
+SILENT		=	> /dev/null 2>&1
 
 NAME		=	cube3D
 
 RM			= rm -f
 
+FLAGS		=	-Wall -Wextra -Werror -lXext -lX11 -lm $(LIBFT) $(MLX) -std=c99
+
+INC			=	-I ./src/libft/\
+				-I ./inc/
+
+
+#LIBFT
 LIBFT_PATH		=	lib/libft/
 LIBFT_NAME		=	libft.a
-LIBFT			=	$(LIBFT_PATH)$(LIBFT_NAME)
+LIBFT			=	$(addprefix $(LIBFT_PATH), $(LIBFT_NAME))
 
+#MLX
 MLX_PATH	=	lib/mlx_linux/
 MLX_NAME	=	libmlx.a
-MLX			=	$(MLX_PATH)$(MLX_NAME)
+MLX			=	$(addprefix $(MLX_PATH), $(MLX_NAME))
 
-FLAGS		=	-Wall -Wextra -Werror $(LIBFT) $(MLX) -std=c99
 
-SILENT		=	> /dev/null 2>&1
+#SRC
+SRC_PATH 	=	src/
+SRC			=	main.c init_all.c \
+				parsing/error.c parsing/map.c parsing/check_args.c \
+				parsing/utils.c parsing/wall_error.c parsing/read_cub.c
+SRCS		=	$(addprefix $(SRC_PATH), $(SRC))
 
-SRCS		= $(addprefix ./src/, $(SRC))
-OBJS		=	$(SRCS:.c=.o)
-
+#OBJ
+OBJ_PATH	=	obj/
+OBJ			=	$(SRC:.c=.o)
+OBJS		=	$(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(MLX) $(LIBFT) $(NAME)
 
@@ -50,7 +60,7 @@ all: $(MLX) $(LIBFT) $(NAME)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@echo $(RED)"C"$(YELLOW)"o"$(GREEN)"m"$(CYAN)"p"$(BLUE)"i"$(MAGENTA)"l"$(RED)"i"$(YELLOW)"n"$(GREEN)"g" $(CYAN)"m"$(BLUE)"i"$(MAGENTA)"n"$(RED)"i"$(YELLOW)"s"$(GREEN)"h"$(CYAN)"e"$(BLUE)"l"$(MAGENTA)"l"$(RED)"."$(YELLOW)"."$(GREEN)"." $(RESET)
+	@echo $(RED)"C"$(YELLOW)"o"$(GREEN)"m"$(CYAN)"p"$(BLUE)"i"$(MAGENTA)"l"$(RED)"i"$(YELLOW)"n"$(GREEN)"g" $(CYAN)"c"$(BLUE)"u"$(MAGENTA)"b"$(RED)"e"$(YELLOW)"3"$(GREEN)"d"$(RESET)
 	@cc $(OBJS) $(FLAGS) -o $(NAME)
 	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
 
@@ -64,7 +74,11 @@ $(MLX):
 $(LIBFT):
 	@echo $(RED)"M"$(YELLOW)"a"$(GREEN)"k"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"g" $(RED)"l"$(YELLOW)"i"$(GREEN)"b"$(CYAN)"f"$(BLUE)"t"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
 	@make --no-print-directory -C $(LIBFT_PATH)
-	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"✨" $(RESET)
+	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!"$(RED)"✨" $(RESET)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
 	@echo $(RED)"Removing .o object files..."
