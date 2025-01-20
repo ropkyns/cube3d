@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 11:21:18 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:39:17 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
 		return (print_error(OPEN_FAILED), 1);
+	ft_launch_game(&map);
+	return (0);
 }
 
 // static void	calloc_global_struct(t_global **global_data)

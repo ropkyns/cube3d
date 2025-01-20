@@ -6,7 +6,7 @@
 #    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/20 10:40:31 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/20 12:55:37 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ MLX			=	$(addprefix $(MLX_PATH), $(MLX_NAME))
 
 #SRC
 SRC_PATH 	=	src/
-SRC			=	main.c init_all.c \
+SRC			=	main.c init_all.c free.c \
+				game/init_game.c game/keycode.c \
 				parsing/error.c parsing/map.c parsing/check_args.c \
 				parsing/utils.c parsing/wall_error.c parsing/read_cub.c
 SRCS		=	$(addprefix $(SRC_PATH), $(SRC))

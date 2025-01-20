@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 12:44:38 by rbouquet         ###   ########.fr       */
+/*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
+/*   Updated: 2025/01/20 12:52:41 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cube3d.h"
+#include "../inc/cube3d.h"
 
-bool	is_valid_char(char c, char *valid_char)
+void	free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (valid_char[i])
-	{
-		if (c == valid_char[i])
-			return (true);
-		i++;
-	}
-	return (false);
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }
 
-bool	is_space(char c)
+void	free_all(t_global *global)
 {
-	if ((c && (c >= 9 && c <= 13)) || (c == ' '))
-		return (true);
-	return (false);
+	if (global->map->map_tab)
+		free_tab(global->map->map_tab);
+	if (global->win->mlx_win)
+		mlx_destroy_window(global->win->mlx_ptr, global->win->mlx_win);
+	if (global->win->mlx_ptr)
+	{
+		mlx_destroy_display(global->win->mlx_ptr);
+		free(global->win->mlx_ptr);
+	}
+	if (global)
+		free(global);
 }

@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 15:22:13 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:06:48 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	start_player_pos(t_map *map, char direction, int i, int j)
 {
-	map->player_x = j;
-	map->player_y = i;
+	map->player_x = (double)j;
+	map->player_y = (double)i;
 	map->player_direction = direction;
 	if (direction == 'N')
 	{

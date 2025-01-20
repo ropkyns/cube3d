@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 11:21:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:27:14 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,20 @@ typedef struct s_map
 {
 	char	**map_tab;
 
+	// MAP_STAT
 	int		line_map;
 	int		column_map;
 	int		height_map;
 	int		lenght_map;
 
-	// void	*wall;
-	// void	*floor;
-	// void	*playern;
-	// void	*players;
-	// void	*playere;
-	// void	*playerw;
-
-	int		player_x;
-	int		player_y;
-	int		player_direction_x;
-	int		player_direction_y;
+	// PLAYER
+	double	player_x;
+	double	player_y;
+	double	player_direction_x;
+	double	player_direction_y;
 	char	player_direction;
-	int		next_x;
-	int		next_y;
 
+	// MAP_CUB
 	char	*no_path;
 	char	*so_path;
 	char	*ea_path;
@@ -101,6 +95,12 @@ typedef struct s_global
 	t_win	*win;
 
 }			t_global;
+
+// INIT_GAME.C
+int			ft_launch_game(t_map *map);
+
+// KEYCODE.C
+int			key_handler(int keycode, t_global *global);
 
 // CHECK_ARGS.C
 bool		is_dir(char *arg);
@@ -124,7 +124,6 @@ char		**maploc(int fd, int count_line, t_map *map);
 // UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
-void		free_tab(char **tab);
 
 // WALL_ERROR.C
 bool		check_column(char **column, int y, int x, int size_y);
@@ -132,6 +131,10 @@ bool		vertical_check(t_map *map, int y, int x);
 bool		check_line(t_map *map, char *line, int x);
 bool		horizontal_check(t_map *map, int y, int x);
 bool		ft_wall_error(t_map *map);
+
+// FREE.C
+void		free_all(t_global *global);
+void		free_tab(char **tab);
 
 // INIT_ALL.C
 void		init_map_struct(t_map *data);

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   keycode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 12:44:38 by rbouquet         ###   ########.fr       */
+/*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
+/*   Updated: 2025/01/20 15:25:00 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
-bool	is_valid_char(char c, char *valid_char)
+static int	win_close(t_global *global)
 {
-	int	i;
-
-	i = 0;
-	while (valid_char[i])
-	{
-		if (c == valid_char[i])
-			return (true);
-		i++;
-	}
-	return (false);
+	ft_putstr_fd("Close Window", 1);
+	free_all(global);
+	exit(0);
 }
 
-bool	is_space(char c)
+int	key_handler(int keycode, t_global *global)
 {
-	if ((c && (c >= 9 && c <= 13)) || (c == ' '))
-		return (true);
-	return (false);
+	if (keycode == XK_Escape)
+		win_close(global);
+}
+
+void	moves(t_map *map, double next_x, double next_y, char sign)
+{
+	if (sign == '+')
+	{
+	}
+	else if (sign == '-')
+	{
+	}
 }
