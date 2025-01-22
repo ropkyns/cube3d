@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/22 13:39:38 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:56:01 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
 		return (print_error(OPEN_FAILED), 1);
-	ft_launch_game(&map);
+	if (!ft_launch_game(global->win))
+		return (1);
+	mlx_hook(global->win, 2, 1L << 0, key_handler, &global);
+	// mlx_hook(global.win, 17, 0, free_all, &global);
 	return (0);
 }

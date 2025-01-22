@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/22 13:53:11 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:55:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-# define ESC 65307
-# define A 97
-# define W 119
-# define D 100
-# define S 115
-# define RIGHT 65361
-# define LEFT 65363
+# define WIN_LENGHT 1920
+# define WIN_HEIGHT 1080
 
 enum		e_error
 {
@@ -98,13 +93,13 @@ typedef struct s_global
 }			t_global;
 
 // INIT_GAME.C
-int			ft_launch_game(t_map *map);
+int			ft_launch_game(t_win *win);
 
 // KEYCODE.C
 int			key_handler(int keycode, t_global *global);
 
 // CHECK_ARGS.C
-bool		is_dir(char *arg);
+// bool		is_dir(char *arg);
 bool		is_good_file(char *arg);
 int			test_file(char *argv);
 
