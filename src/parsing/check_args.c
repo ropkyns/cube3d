@@ -6,26 +6,11 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/15 12:26:30 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:58:22 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
-
-bool	is_dir(char *arg)
-{
-	int		fd;
-	bool	ret;
-
-	ret = false;
-	fd = open(arg, __O_DIRECTORY);
-	if (fd >= 0)
-	{
-		close(fd);
-		ret = true;
-	}
-	return (ret);
-}
 
 bool	is_good_file(char *arg)
 {

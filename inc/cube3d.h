@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/22 10:00:50 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:53:11 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char		**maploc(int fd, int count_line);
 // UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
-bool	ft_isdigit_str(char *str);
+bool		ft_isdigit_str(char *str);
 
 // WALL_ERROR.C
 bool		check_column(char **column, int y, int x, int size_y);
@@ -140,7 +140,7 @@ void		free_tab(char **tab);
 
 // INIT_ALL.C
 void		init_map_struct(t_map *data);
-void		init_mlx(t_global *data);
+void		init_game_stat(t_win *win);
 
 // MAIN.C
 

@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/20 10:42:56 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:39:38 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,8 @@ void	init_map_struct(t_map *map)
 	// }
 }
 
-void	init_mlx(t_global *data)
+void	init_game_stat(t_win *win)
 {
-	data->win->mlx_ptr = mlx_init();
-	if (!data->win->mlx_ptr)
-		print_error(ERROR_MLX);
-	data->win->mlx_win = mlx_new_window(data->win->mlx_ptr,
-			(data->win->lenght_win), (data->win->height_win), "Wolfgame");
-	if (!data->win->mlx_win)
-	{
-		mlx_destroy_display(data->win->mlx_ptr);
-		free(data->win->mlx_ptr);
-		print_error(ERROR_MLX);
-	}
+	win->lenght_win = 1940;
+	win->height_win = 1280;
 }
