@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 15:27:14 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:00:50 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_map
 	char	*we_path;
 	int		*c_code;
 	int		*f_code;
+	int		gnl_count;
 
 }			t_map;
 
@@ -118,12 +119,13 @@ char		*ft_resize_line(char *map, int size);
 
 // READ_CUB.C
 bool		read_file(t_map *map, char *map_path);
-bool		get_map(t_map *map, char *path, int fd);
-char		**maploc(int fd, int count_line, t_map *map);
+bool		get_map(t_map *map, int fd, char *path);
+char		**maploc(int fd, int count_line);
 
 // UTILS.C
 bool		is_valid_char(char c, char *valid_char);
 bool		is_space(char c);
+bool	ft_isdigit_str(char *str);
 
 // WALL_ERROR.C
 bool		check_column(char **column, int y, int x, int size_y);

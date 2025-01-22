@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 12:44:38 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:00:45 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,16 @@ bool	is_space(char c)
 	if ((c && (c >= 9 && c <= 13)) || (c == ' '))
 		return (true);
 	return (false);
+}
+
+bool	ft_isdigit_str(char *str)
+{
+	while (*str && str)
+	{
+		if (!ft_isdigit(*str))
+			return (false);
+		else
+			str++;
+	}
+	return (true);
 }
