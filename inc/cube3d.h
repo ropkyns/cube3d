@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/22 14:55:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:41:16 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <stdio.h>
 # include <sys/stat.h>
 # include <sys/types.h>
+# include <math.h>
 
-# define WIN_LENGHT 1920
-# define WIN_HEIGHT 1080
+# define WIN_LENGHT 1280
+# define WIN_HEIGHT 720
 
 enum		e_error
 {
@@ -43,9 +44,26 @@ enum		e_img
 	WALL_S,
 	WALL_W,
 	WALL_E,
-	// FLOOR,
-	// CEILING,
 };
+
+typedef struct s_pos
+{
+	double	x;
+	double	y;
+}			t_pos;
+
+typedef struct s_player
+{
+		// PLAYER
+	t_pos	player;
+	t_pos	direction_;
+	double	speed;
+}			t_player;
+
+typedef struct s_ray
+{
+	
+}			t_ray;
 
 typedef struct s_win
 {
@@ -53,6 +71,7 @@ typedef struct s_win
 	void	*mlx_win;
 	int		height_win;
 	int		lenght_win;
+
 }			t_win;
 
 typedef struct s_map
@@ -64,13 +83,6 @@ typedef struct s_map
 	int		column_map;
 	int		height_map;
 	int		lenght_map;
-
-	// PLAYER
-	double	player_x;
-	double	player_y;
-	double	player_direction_x;
-	double	player_direction_y;
-	char	player_direction;
 
 	// MAP_CUB
 	char	*no_path;
@@ -130,7 +142,7 @@ bool		horizontal_check(t_map *map, int y, int x);
 bool		ft_wall_error(t_map *map);
 
 // FREE.C
-void		free_all(t_global *global);
+int			free_all(t_global *global);
 void		free_tab(char **tab);
 
 // INIT_ALL.C

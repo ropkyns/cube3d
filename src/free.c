@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/20 12:52:41 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:12:16 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
-void	free_all(t_global *global)
+int	free_all(t_global *global)
 {
 	if (global->map->map_tab)
 		free_tab(global->map->map_tab);
@@ -35,4 +35,5 @@ void	free_all(t_global *global)
 	}
 	if (global)
 		free(global);
+	exit(0);
 }

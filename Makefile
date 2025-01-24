@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/20 12:55:37 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/24 09:23:07 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 clean:
 	@echo $(RED)"Removing .o object files..."
 	@rm -rf $(OBJ_PATH) $(SILENT)
-	@make clean -C $(MLX_PATH) $(SILENT)
+	@if [ -d "$(MLX_PATH)" ]; then make clean -C $(MLX_PATH) $(SILENT); fi
 	@make clean -C $(LIBFT_PATH) $(SILENT)
 	@echo $(RED)".o object files removed!"
 
