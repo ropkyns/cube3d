@@ -6,78 +6,39 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:14 by romain            #+#    #+#             */
-/*   Updated: 2025/01/17 13:57:27 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:56:51 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
-bool	check_column(char **column, int y, int x, int size_y)
+bool	check_line(char **line, int y, int x, int size_y)
 {
-	while (y < size_y)
-	{
-		if (y == 0 && !is_valid_char(column[y][x], "1 "))
-			return (false);
-		if (!is_valid_char(column[y][x], "10NSEW"))
-			return (print_error(INVALID_CHARACTER_ON_MAP), false);
-		if (is_space(column[y][x]) == true)
-		{
-			if (y > 0 && column[y - 1][x] != '1')
-				return (false);
-			while (y < size_y && column[y][x] == ' ')
-				y++;
-			if (y < size_y && column[y][x] != '1')
-				return (false);
-		}
-		if (y < size_y)
-			y++;
-	}
-	if (!is_valid_char(column[y - 1][x], "1 "))
+	if ((y == 0 || y == size_y - 1 || line[y] == NULL) && !check_str(line[y],
+			"1 \n"))
 		return (false);
-	return (true);
-}
-
-bool	vertical_check(t_map *map, int y, int x)
-{
-	while (map->map_tab[y][x])
+	if (y > 0 && y < size_y - 1)
 	{
-		if (!check_column(map->map_tab, y, x, map->height_map))
+		if ((line[y][0] != '1' && line[y][0] != ' ')
+			|| (line[y][ft_strlen(line[y]) - 2] != '1'
+				&& line[y][ft_strlen(line[y]) - 2] != ' '))
 			return (false);
-		x++;
+		if (line[y + 1][x] != '1' && line[y + 1][x] != ' ')
+			return (false);
+		while (line[y][x] != '\n')
+			if (!is_valid_char(line[y][x++], "10NSEW "))
+				return (false);
 	}
 	return (true);
 }
 
-bool	check_line(t_map *map, char *line, int x)
+bool	correct_line(t_map *map, int y, int x)
 {
-	while (line[x])
-	{
-		if (x == 0 && !is_valid_char(line[x], "1 "))
-			return (false);
-		if (!is_valid_char(line[x], "10NSEW "))
-			return (print_error(INVALID_CHARACTER_ON_MAP), false);
-		if (line[x] == ' ')
-		{
-			if (x > 0 && line[x - 1] != '1')
-				return (false);
-			while (line[x] && line[x] == ' ')
-				x++;
-			if (line[x] && line[x] != '1')
-				return (false);
-		}
-		if (line[x])
-			x++;
-	}
-	if (!is_valid_char(line[x - 1], "1 "))
-		return (false);
-	return (true);
-}
+	int	i;
 
-bool	horizontal_check(t_map *map, int y, int x)
-{
-	while (map->map_tab[y])
+	while (y < map->height_map && map->map_tab[y][x])
 	{
-		if (!check_line(map, map->map_tab[y], x))
+		if (!check_line(map->map_tab, y, 0, map->height_map))
 			return (false);
 		y++;
 	}
@@ -91,7 +52,7 @@ bool	ft_wall_error(t_map *map)
 
 	y = 0;
 	x = 0;
-	if (!horizontal_check(map, y, x) || !vertical_check(map, y, x))
+	if (!correct_line(map, y, x))
 		return (false);
 	return (true);
 }
