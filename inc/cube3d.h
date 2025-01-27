@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/24 13:41:16 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:28:40 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ typedef struct s_pos
 typedef struct s_player
 {
 		// PLAYER
-	t_pos	player;
-	t_pos	direction_;
+	t_pos	*pos;
+	t_pos	*player_dir;
+	char	direction;
 	double	speed;
 }			t_player;
 
@@ -76,22 +77,26 @@ typedef struct s_win
 
 typedef struct s_map
 {
-	char	**map_tab;
+	char		**map_tab;
 
 	// MAP_STAT
-	int		line_map;
-	int		column_map;
-	int		height_map;
-	int		lenght_map;
+	int			line_map;
+	int			column_map;
+	int			height_map;
+	int			lenght_map;
+
+	// PLAYER
+	t_player	*player;
+	
 
 	// MAP_CUB
-	char	*no_path;
-	char	*so_path;
-	char	*ea_path;
-	char	*we_path;
-	int		*c_code;
-	int		*f_code;
-	int		gnl_count;
+	char		*no_path;
+	char		*so_path;
+	char		*ea_path;
+	char		*we_path;
+	int			*c_code;
+	int			*f_code;
+	int			gnl_count;
 
 }			t_map;
 

@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/24 09:23:07 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/27 09:19:10 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,21 +61,21 @@ all: $(MLX) $(LIBFT) $(NAME)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@echo $(RED)"C"$(YELLOW)"o"$(GREEN)"m"$(CYAN)"p"$(BLUE)"i"$(MAGENTA)"l"$(RED)"i"$(YELLOW)"n"$(GREEN)"g" $(CYAN)"c"$(BLUE)"u"$(MAGENTA)"b"$(RED)"e"$(YELLOW)"3"$(GREEN)"d"$(RESET)
+	@echo $(CYAN)"Compiling CUB3D..."$(RESET)
 	@cc $(OBJS) $(FLAGS) -o $(NAME)
-	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!" $(RED)"💫" $(RESET)
+	@echo $(BLUE)"👾Done !👾" $(RESET)
 
 $(MLX):
-	@echo $(BLUE)"Making MiniLibx..."
-	@echo $(BLUE)"Cloning 'mlx' from https://github.com/42Paris/minilibx-linux..."
+	@echo $(CYAN)"Cloning 'mlx' from https://github.com/42Paris/minilibx-linux..."
 	@git clone https://github.com/42Paris/minilibx-linux.git lib/mlx_linux $(SILENT)
-	@echo $(BLUE)"Compiling MiniLibx..."
+	@echo $(CYAN)"Compiling MiniLibx..."
 	@make -sC $(MLX_PATH) $(SILENT)
+	@echo $(BLUE)"👾Done !👾" $(RESET)
 
 $(LIBFT):
-	@echo $(RED)"M"$(YELLOW)"a"$(GREEN)"k"$(CYAN)"i"$(BLUE)"n"$(MAGENTA)"g" $(RED)"l"$(YELLOW)"i"$(GREEN)"b"$(CYAN)"f"$(BLUE)"t"$(MAGENTA)"."$(RED)"."$(YELLOW)"." $(RESET)
+	@echo $(CYAN)"Compiling LIBFT..."$(RESET)
 	@make --no-print-directory -C $(LIBFT_PATH)
-	@echo $(RED)"D"$(YELLOW)"o"$(GREEN)"n"$(CYAN)"e"$(BLUE)"!"$(MAGENTA)"!"$(RED)"✨" $(RESET)
+	@echo $(BLUE)"👾Done !👾" $(RESET)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(dir $@)

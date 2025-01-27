@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/20 14:06:48 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:30:39 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	start_player_pos(t_map *map, char direction, int i, int j)
 {
-	map->player_x = (double)j;
-	map->player_y = (double)i;
-	map->player_direction = direction;
+	map->player->pos->x = (double)j;
+	map->player->pos->y = (double)i;
+	map->player->direction = direction;
 	if (direction == 'N')
 	{
-		map->player_direction_x = 0;
-		map->player_direction_y = -1;
+		map->player->player_dir->x = 0;
+		map->player->player_dir->y = -1;
 	}
 	else if (direction == 'S')
 	{
-		map->player_direction_x = 0;
-		map->player_direction_y = 1;
+		map->player->player_dir->x = 0;
+		map->player->player_dir->y = 1;
 	}
 	else if (direction == 'W')
 	{
-		map->player_direction_x = -1;
-		map->player_direction_y = 0;
+		map->player->player_dir->x = -1;
+		map->player->player_dir->y = 0;
 	}
 	else if (direction == 'E')
 	{
-		map->player_direction_x = 1;
-		map->player_direction_y = 0;
+		map->player->player_dir->x = 1;
+		map->player->player_dir->y = 0;
 	}
 }
 
