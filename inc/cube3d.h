@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 10:58:01 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:33:58 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ enum			e_error
 	INCORRECT_PLAYER,
 	ERROR_MALLOC,
 	ERROR_MLX,
+	BAD_EXTENSION,
+	EMPTY_FILE,
+	INVALID_INPUT,
 };
 
 enum			e_img
@@ -103,6 +106,7 @@ typedef struct s_global
 	char		*arg;
 	t_map		*map;
 	t_win		*win;
+	t_ray		*ray;
 
 }				t_global;
 
@@ -115,7 +119,7 @@ int				key_handler(int keycode, t_global *global);
 // CHECK_ARGS.C
 // bool		is_dir(char *arg);
 bool			is_good_file(char *arg);
-int				test_file(char *argv);
+int				test_map(char *argv, t_map *map);
 
 // ERROR.C
 void			print_error(int error);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/22 11:58:22 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:35:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	is_good_file(char *arg)
 	return (false);
 }
 
-int	test_file(char *argv)
+int	test_map(char *argv, t_map	*map)
 {
 	int		fd;
 	int		result;
@@ -31,19 +31,23 @@ int	test_file(char *argv)
 
 	if (!is_good_file(argv))
 	{
-		ft_printf("Error\nBad extension\n");
-		return (0);
+		print_error(BAD_EXTENSION);
+		return (false);
 	}
 	fd = open(argv, O_RDONLY);
 	result = read(fd, &test, 1);
 	if (result <= 0)
 	{
 		if (result == 0)
-			ft_printf("Error\nEmpty file\n");
+			print_error(EMPTY_FILE);
 		else if (result < 0)
-			ft_printf("Error\nInvalid input\n");
-		return (0);
+			print_error(INVALID_INPUT);
+		return (false);
 	}
+	if (!read_file(map, argv))
+		return (false);
+	if (! ft_resize_map(map))
+		return (false);
 	close(fd);
-	return (1);
+	return (true);
 }

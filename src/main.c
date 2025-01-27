@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 11:03:16 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:33:58 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int	main(int argc, char **argv)
 	// init_map_struct(global->map);
 	if (argc != 2)
 		return (print_error(PROBLEM_ARGUMENTS), 1);
-	if (!test_file(argv[1]))
+	global->map = ft_calloc(1, sizeof(t_map));
+	if (!test_map(argv[1], global->map))
 		return (1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd <= 0)
-		return (print_error(OPEN_FAILED), 1);
 	global->win = ft_calloc(1, sizeof(t_win));
 	if (!ft_launch_game(global->win))
 		return (1);
