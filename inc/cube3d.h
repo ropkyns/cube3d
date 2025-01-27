@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 12:23:49 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:33:16 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define WIN_LENGHT 1280
 # define WIN_HEIGHT 720
+
+# define PI 3.14159265359
 
 enum			e_error
 {
