@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/27 11:35:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:47:59 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	is_good_file(char *arg)
 	return (false);
 }
 
-int	test_map(char *argv, t_map	*map)
+int	test_map(char *argv, t_map *map)
 {
 	int		fd;
 	int		result;
@@ -46,7 +46,7 @@ int	test_map(char *argv, t_map	*map)
 	}
 	if (!read_file(map, argv))
 		return (false);
-	if (! ft_resize_map(map))
+	if (!ft_resize_map(map))
 		return (false);
 	close(fd);
 	return (true);

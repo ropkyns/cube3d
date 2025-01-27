@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 11:01:11 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:09:44 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	start_player_pos(t_map *map, char direction, int i, int j)
 		map->player->player_dir->x = 0;
 		map->player->player_dir->y = -1;
 	}
-	else if (direction == 'S')
+	if (direction == 'S')
 	{
 		map->player->player_dir->x = 0;
 		map->player->player_dir->y = 1;
@@ -87,7 +87,11 @@ bool	ft_resize_map(t_map *map)
 		}
 		i++;
 	}
-	ft_wall_error(map);
+	if (!ft_wall_error(map))
+	{
+		print_error(INVALID_INFO);
+		return (false);
+	}
 	return (true);
 }
 
