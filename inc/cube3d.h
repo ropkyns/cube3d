@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 12:23:49 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:25:38 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,10 @@ bool			ft_wall_error(t_map *map);
 // FREE.C
 int				free_all(t_global *global);
 void			free_tab(char **tab);
+int				win_close(t_global *data);
 
 // INIT_ALL.C
-void			init_map_struct(t_map *data);
+void			init_map_struct(t_global *global);
 void			init_game_stat(t_win *win);
 
 // MAIN.C
