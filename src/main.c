@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 11:47:52 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:28:33 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 	global->win = ft_calloc(1, sizeof(t_win));
 	if (!ft_launch_game(global->win))
 		return (1);
-	mlx_hook(global->win, 2, 1L << 0, key_handler, global);
-	mlx_hook(global->win, 17, 0, free_all, global);
+	mlx_hook(global->win->mlx_win, 2, 1L << 0, key_handler, global);
+	mlx_hook(global->win->mlx_win, 17, 0, free_all, global);
 	mlx_loop(global->win->mlx_ptr);
 	return (0);
 }

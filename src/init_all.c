@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/27 09:20:28 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:23:43 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_map_struct(t_map *map)
 	// }
 }
 
-void	init_game_stat(t_win *win)
-{
-	win->lenght_win = WIN_LENGHT;
-	win->height_win = WIN_HEIGHT;
-}
+// void	init_game_stat(t_win *win)
+// {
+// 	win->lenght_win = WIN_LENGHT;
+// 	win->height_win = WIN_HEIGHT;
+// }

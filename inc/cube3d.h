@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 11:33:58 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:23:49 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct s_win
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
-	int			height_win;
-	int			lenght_win;
+	// int			height_win;
+	// int			lenght_win;
 
 }				t_win;
 
