@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/24 10:12:16 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:31:31 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,12 @@ int	free_all(t_global *global)
 	}
 	if (global)
 		free(global);
+	exit(0);
+}
+
+int	win_close(t_global *data)
+{
+	ft_printf("Close the window\n");
+	free_all(data);
 	exit(0);
 }
