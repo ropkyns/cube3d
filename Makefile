@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
+#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/27 09:19:10 by paulmart         ###   ########.fr        #
+#    Updated: 2025/01/28 21:00:57 by palu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ NAME		=	cube3D
 
 RM			= rm -f
 
-FLAGS		=	-Wall -Wextra -Werror -lXext -lX11 -lm $(LIBFT) $(MLX) -std=c99
+FLAGS		=	-Wall -Wextra -Werror -Llib/mlx_linux -lmlx -lX11 -lXext -lXrender -lXrandr -lXtst -lXi -lm $(LIBFT) $(MLX) -std=c99
 
 INC			=	-I ./src/libft/\
 				-I ./inc/
