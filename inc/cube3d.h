@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 12:03:49 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:55:25 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
+# define WIN_LENGHT 1280
+# define WIN_HEIGHT 720
 # define PI 3.14159265359
 
 enum			e_error
@@ -52,7 +54,6 @@ typedef struct s_pos
 {
 	double		x;
 	double		y;
-	char		dir;
 }				t_pos;
 
 typedef struct s_player
@@ -60,12 +61,28 @@ typedef struct s_player
 	// PLAYER
 	t_pos		*pos;
 	t_pos		*player_dir;
+	t_pos		*cam_plane_vect;
 	double		speed;
 	double		rotation_speed;
 }				t_player;
 
 typedef struct s_ray
 {
+	int		curr_x;
+	int		map_x;
+	int		map_y;
+	double	cam_x;
+	t_pos	*ray_dir;
+	t_pos	*side_dist;
+	t_pos	*delta_dist;
+	double	prep_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }				t_ray;
 
 typedef struct s_win

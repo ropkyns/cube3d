@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/30 11:56:35 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:32:47 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	init_map_struct(t_global *global)
 
 void	init_game_stat(t_win *win)
 {
-	win->lenght_win = 1280;
-	win->height_win = 720;
+	win->lenght_win = WIN_LENGHT;
+	win->height_win = WIN_HEIGHT;
 	win->player->speed = 0.09;
 	win->player->rotation_speed = 0.09;
 }

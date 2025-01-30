@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendu.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/30 11:48:32 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:35:08 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	background(t_win *win)
 		while (y < win->height_win)
 		{
 			if (y < win->height_win / 2)
-				lx_pixel_put(win, win->mlx_win, x, y, );
+				mlx_pixel_put(win, win->mlx_win, x, y, );
 			else
 				mlx_pixel_put(win, win->mlx_win, x, y, );
 			y++;
