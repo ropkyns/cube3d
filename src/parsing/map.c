@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 12:05:54 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:55:54 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
+
+void	set_player_stat(t_player *player, double dir_y, double p_x, double p_y)
+{
+	player->dir->y = dir_y;
+	player->plan_vect->x = p_x;
+	player->plan_vect->Y = p_y;
+}
 
 void	start_player_pos(t_map *map, char direction, int i, int j)
 {
@@ -19,23 +26,23 @@ void	start_player_pos(t_map *map, char direction, int i, int j)
 	map->player->player_dir->dir = direction;
 	if (direction == 'N')
 	{
-		map->player->player_dir->x = 0;
-		map->player->player_dir->y = -1;
+		map->player->dir->x = 0.00;
+		set_player_stat(map->player, -1.00, 0.66, 0.00);
 	}
 	if (direction == 'S')
 	{
-		map->player->player_dir->x = 0;
-		map->player->player_dir->y = 1;
+		map->player->dir->x =  0.00;
+		set_player_stat(map->player, 1.00, -0.66, 0.00);
 	}
 	else if (direction == 'W')
 	{
-		map->player->player_dir->x = -1;
-		map->player->player_dir->y = 0;
+		map->player->dir->x = -1.00;
+		set_player_stat(map->player, 0.00, 0.00, -0.66);
 	}
 	else if (direction == 'E')
 	{
-		map->player->player_dir->x = 1;
-		map->player->player_dir->y = 0;
+		map->player->dir->x = 1;
+		set_player_stat(map->player, 0.00, 0.00, 0.66);
 	}
 }
 
@@ -48,15 +55,14 @@ bool	map_size(t_map *map, char **array, int i, int j)
 	nbr_player = 0;
 	while (array[i])
 	{
-		j = 0;
-		while (array[i][j])
+		j = -1;
+		while (array[i][++j])
 		{
 			if (is_valid_char(array[i][j], "NSEW"))
 			{
 				nbr_player += 1;
 				start_player_pos(map, array[i][j], i, j);
 			}
-			j++;
 		}
 		if (j > tmp)
 			tmp = j;

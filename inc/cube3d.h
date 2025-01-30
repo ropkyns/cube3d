@@ -6,7 +6,7 @@
 /*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 17:55:25 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:22:45 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_player
 {
 	// PLAYER
 	t_pos		*pos;
-	t_pos		*player_dir;
-	t_pos		*cam_plane_vect;
+	t_pos		*dir;
+	t_pos		*plan_vect;
 	double		speed;
 	double		rotation_speed;
 }				t_player;
@@ -149,6 +149,8 @@ void			start_player_pos(t_map *map, char direction, int i, int j);
 bool			map_size(t_map *map, char **array, int i, int j);
 bool			ft_resize_map(t_map *map);
 char			*ft_resize_line(char *map, int size);
+void			set_player_stat(t_player *player, double dir_y, double p_x, double p_y);
+
 
 // READ_CUB.C
 bool			read_file(t_map *map, char *map_path);
