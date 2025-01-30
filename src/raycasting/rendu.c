@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rendu.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 11:26:49 by rbouquet         ###   ########.fr       */
+/*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
+/*   Updated: 2025/01/30 11:48:32 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube3d.h"
+#include "../../inc/cube3d.h"
 
-int	main(int argc, char **argv)
+void	background(t_win *win)
 {
-	int			fd;
-	t_global	*global;
+	int	x;
+	int	y;
 
-	global = ft_calloc(1, sizeof(t_global));
-	init_map_struct(global);
-	if (argc != 2)
-		return (print_error(PROBLEM_ARGUMENTS), 1);
-	if (!test_map(argv[1], global->map))
-		return (1);
-	global->win = ft_calloc(1, sizeof(t_win));
-	if (!ft_launch_game(global->win))
-		return (1);
-	return (0);
+	x = 0;
+	while (x < win->lenght_win)
+	{
+		y = 0;
+		while (y < win->height_win)
+		{
+			if (y < win->height_win / 2)
+				lx_pixel_put(win, win->mlx_win, x, y, );
+			else
+				mlx_pixel_put(win, win->mlx_win, x, y, );
+			y++;
+		}
+		x++;
+	}
+}
+
+int	rendu(t_win *win)
+{
+	background(win);
+	raycasting(win->ray);
 }

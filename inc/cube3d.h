@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 14:57:37 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:03:49 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 # include <stdio.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-
-# define WIN_LENGHT 1280
-# define WIN_HEIGHT 720
 
 # define PI 3.14159265359
 
@@ -55,6 +52,7 @@ typedef struct s_pos
 {
 	double		x;
 	double		y;
+	char		dir;
 }				t_pos;
 
 typedef struct s_player
@@ -63,6 +61,7 @@ typedef struct s_player
 	t_pos		*pos;
 	t_pos		*player_dir;
 	double		speed;
+	double		rotation_speed;
 }				t_player;
 
 typedef struct s_ray
@@ -73,8 +72,10 @@ typedef struct s_win
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
-	// int			height_win;
-	// int			lenght_win;
+	int			height_win;
+	int			lenght_win;
+	t_ray		*ray;
+	t_player	*player;
 
 }				t_win;
 
@@ -147,6 +148,13 @@ bool			check_str(char *str, char *valid);
 bool			check_line(char **line, int y, int x, int size_y);
 bool			correct_line(t_map *map, int y, int x);
 bool			ft_wall_error(t_map *map);
+
+// RAYCASTING.C
+void			raycasting(t_ray *ray);
+
+// RENDU.C
+int				rendu(t_win *win);
+void			background(t_win *win);
 
 // FREE.C
 int				free_all(t_global *global);
