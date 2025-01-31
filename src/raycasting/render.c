@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendu.c                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/31 13:12:03 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:13:02 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	background(t_global *global)
 
 int	rendu(t_global *global)
 {
+	global->ray = ft_calloc(1, sizeof(t_ray));
 	background(global);
-	// raycasting(win->ray);
+	while (global->ray->curr_x < WIN_LENGHT)
+		raycasting(global);
 	return (0);
 }
