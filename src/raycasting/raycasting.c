@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/30 20:29:30 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/31 13:14:17 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,36 @@ static void	init_values(t_ray *ray, t_player *player)
 	ray->delta_dist->y = fabs(1 / ray->ray_dir->y);
 	ray->hit = 0;
 }
-void	raycasting(t_ray *ray)
+
+static void	get_step(t_ray *ray, t_player *player)
 {
+	if (ray->ray_dir->x < 0)
+	{
+		ray->step_x = -1;
+		ray->side_dist->x = (player->pos->x - ray->map_x) * ray->delta_dist->x;
+	}
+	else
+	{
+		ray->step_x = 1;
+		ray->side_dist->x = (ray->map_x + 1.0 - player->pos->x)
+			* ray->delta_dist->x;
+	}
+	if (ray->ray_dir->y < 0)
+	{
+		ray->step_y = -1;
+		ray->side_dist->y = (player->pos->y - ray->map_y) * ray->delta_dist->y;
+	}
+	else
+	{
+		ray->step_y = 1;
+		ray->side_dist->y = (ray->map_y + 1.0 - player->pos->y)
+			* ray->delta_dist->y;
+	}
+}
+
+void	raycasting(t_ray *ray, t_player *player)
+{
+	init_values(ray, player);
+	get_step(ray, player);
+	
 }
