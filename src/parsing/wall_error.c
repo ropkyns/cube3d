@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:14 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 12:07:48 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:16:10 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,27 @@ bool	check_line(char **line, int y, int x, int size_y)
 	return (true);
 }
 
-bool	correct_line(t_map *map, int y, int x)
+bool	correct_line(t_global *global, int y, int x)
 {
 	int	i;
 
-	while (y < map->height_map && map->map_tab[y][x])
+	while (y < global->map->height_map && global->map->map_tab[y][x])
 	{
-		if (!check_line(map->map_tab, y, 0, map->height_map))
+		if (!check_line(global->map->map_tab, y, 0, global->map->height_map))
 			return (false);
 		y++;
 	}
 	return (true);
 }
 
-bool	ft_wall_error(t_map *map)
+bool	ft_wall_error(t_global *global)
 {
 	int	y;
 	int	x;
 
 	y = 0;
 	x = 0;
-	if (!correct_line(map, y, x))
+	if (!correct_line(global, y, x))
 		return (false);
 	return (true);
 }

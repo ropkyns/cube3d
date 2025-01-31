@@ -6,7 +6,7 @@
 #    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/29 11:36:04 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/01/31 09:19:17 by rbouquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRC_PATH 	=	src/
 SRC			=	main.c init_all.c free.c \
 				game/init_game.c game/keycode.c \
 				parsing/error.c parsing/map.c parsing/check_args.c \
-				parsing/utils.c parsing/wall_error.c parsing/read_cub.c
+				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
+				raycasting/raycasting.c raycasting/rendu.c
 SRCS		=	$(addprefix $(SRC_PATH), $(SRC))
 
 #OBJ

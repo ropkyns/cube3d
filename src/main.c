@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 11:26:49 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:11:25 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	main(int argc, char **argv)
 	init_map_struct(global);
 	if (argc != 2)
 		return (print_error(PROBLEM_ARGUMENTS), 1);
-	if (!test_map(argv[1], global->map))
+	if (!test_map(argv[1], global))
 		return (1);
-	global->win = ft_calloc(1, sizeof(t_win));
-	if (!ft_launch_game(global->win))
+	if (!ft_launch_game(global))
 		return (1);
 	return (0);
 }
