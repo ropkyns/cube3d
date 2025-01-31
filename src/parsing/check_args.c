@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/27 11:47:59 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:13:02 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	is_good_file(char *arg)
 	return (false);
 }
 
-int	test_map(char *argv, t_map *map)
+int	test_map(char *argv, t_global *global)
 {
 	int		fd;
 	int		result;
@@ -44,9 +44,9 @@ int	test_map(char *argv, t_map *map)
 			print_error(INVALID_INPUT);
 		return (false);
 	}
-	if (!read_file(map, argv))
+	if (!read_file(global->map, argv))
 		return (false);
-	if (!ft_resize_map(map))
+	if (!ft_resize_map(global))
 		return (false);
 	close(fd);
 	return (true);

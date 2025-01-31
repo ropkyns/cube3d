@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 18:55:54 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/31 13:15:22 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,36 @@ void	set_player_stat(t_player *player, double dir_y, double p_x, double p_y)
 {
 	player->dir->y = dir_y;
 	player->plan_vect->x = p_x;
-	player->plan_vect->Y = p_y;
+	player->plan_vect->y = p_y;
 }
 
-void	start_player_pos(t_map *map, char direction, int i, int j)
+void	start_player_pos(t_global *global, char direction, int i, int j)
 {
-	map->player->pos->x = (double)j;
-	map->player->pos->y = (double)i;
-	map->player->player_dir->dir = direction;
+	global->player->pos->x = (double)j;
+	global->player->pos->y = (double)i;
 	if (direction == 'N')
 	{
-		map->player->dir->x = 0.00;
-		set_player_stat(map->player, -1.00, 0.66, 0.00);
+		global->player->dir->x = 0.00;
+		set_player_stat(global->player, -1.00, 0.66, 0.00);
 	}
 	if (direction == 'S')
 	{
-		map->player->dir->x =  0.00;
-		set_player_stat(map->player, 1.00, -0.66, 0.00);
+		global->player->dir->x = 0.00;
+		set_player_stat(global->player, 1.00, -0.66, 0.00);
 	}
 	else if (direction == 'W')
 	{
-		map->player->dir->x = -1.00;
-		set_player_stat(map->player, 0.00, 0.00, -0.66);
+		global->player->dir->x = -1.00;
+		set_player_stat(global->player, 0.00, 0.00, -0.66);
 	}
 	else if (direction == 'E')
 	{
-		map->player->dir->x = 1;
-		set_player_stat(map->player, 0.00, 0.00, 0.66);
+		global->player->dir->x = 1.00;
+		set_player_stat(global->player, 0.00, 0.00, 0.66);
 	}
 }
 
-bool	map_size(t_map *map, char **array, int i, int j)
+bool	map_size(t_global *global, char **array, int i, int j)
 {
 	int	tmp;
 	int	nbr_player;
@@ -61,7 +60,9 @@ bool	map_size(t_map *map, char **array, int i, int j)
 			if (is_valid_char(array[i][j], "NSEW"))
 			{
 				nbr_player += 1;
-				start_player_pos(map, array[i][j], i, j);
+				if (nbr_player > 1)
+					return (false);
+				start_player_pos(global, array[i][j], i, j);
 			}
 		}
 		if (j > tmp)
@@ -70,31 +71,32 @@ bool	map_size(t_map *map, char **array, int i, int j)
 	}
 	if (nbr_player != 1)
 		return (false);
-	map->height_map = i;
-	map->lenght_map = tmp;
+	global->map->height_map = i;
+	global->map->lenght_map = tmp;
 	return (true);
 }
 
-bool	ft_resize_map(t_map *map)
+bool	ft_resize_map(t_global *global)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (map_size(map, map->map_tab, i, j) == false)
+	if (map_size(global, global->map->map_tab, i, j) == false)
 		return (print_error(INCORRECT_PLAYER), false);
-	while (map->map_tab[i])
+	while (global->map->map_tab[i])
 	{
-		if ((int)ft_strlen(map->map_tab[i]) < map->lenght_map)
+		if ((int)ft_strlen(global->map->map_tab[i]) < global->map->lenght_map)
 		{
-			map->map_tab[i] = ft_resize_line(map->map_tab[i], map->lenght_map);
-			if (!map->map_tab[i])
+			global->map->map_tab[i] = ft_resize_line(global->map->map_tab[i],
+					global->map->lenght_map);
+			if (!global->map->map_tab[i])
 				return (print_error(ERROR_MALLOC), false);
 		}
 		i++;
 	}
-	if (!ft_wall_error(map))
+	if (!ft_wall_error(global))
 	{
 		print_error(INVALID_INFO);
 		return (false);

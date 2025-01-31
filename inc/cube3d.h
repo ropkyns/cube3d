@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/30 18:22:45 by palu             ###   ########.fr       */
+/*   Updated: 2025/01/31 13:18:21 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	int		curr_x;
-	int		map_x;
-	int		map_y;
-	double	cam_x;
-	t_pos	*ray_dir;
-	t_pos	*side_dist;
-	t_pos	*delta_dist;
-	double	prep_wall_dist;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	int			curr_x;
+	int			map_x;
+	int			map_y;
+	double		cam_x;
+	t_pos		*ray_dir;
+	t_pos		*side_dist;
+	t_pos		*delta_dist;
+	double		prep_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }				t_ray;
 
 typedef struct s_win
@@ -92,7 +92,6 @@ typedef struct s_win
 	int			height_win;
 	int			lenght_win;
 	t_ray		*ray;
-	t_player	*player;
 
 }				t_win;
 
@@ -105,9 +104,6 @@ typedef struct s_map
 	int			column_map;
 	int			height_map;
 	int			lenght_map;
-
-	// PLAYER
-	t_player	*player;
 
 	// MAP_CUB
 	char		*no_path;
@@ -125,13 +121,14 @@ typedef struct s_global
 	char		*line;
 	char		*arg;
 	t_map		*map;
+	t_player	*player;
 	t_win		*win;
 	t_ray		*ray;
 
 }				t_global;
 
 // INIT_GAME.C
-int				ft_launch_game(t_win *win);
+int				ft_launch_game(t_global *global);
 
 // KEYCODE.C
 int				key_handler(int keycode, t_global *global);
@@ -139,18 +136,19 @@ int				key_handler(int keycode, t_global *global);
 // CHECK_ARGS.C
 // bool		is_dir(char *arg);
 bool			is_good_file(char *arg);
-int				test_map(char *argv, t_map *map);
+int				test_map(char *argv, t_global *global);
 
 // ERROR.C
 void			print_error(int error);
 
 // MAP.C
-void			start_player_pos(t_map *map, char direction, int i, int j);
-bool			map_size(t_map *map, char **array, int i, int j);
-bool			ft_resize_map(t_map *map);
+void			start_player_pos(t_global *global, char direction, int i,
+					int j);
+bool			map_size(t_global *global, char **array, int i, int j);
+bool			ft_resize_map(t_global *global);
 char			*ft_resize_line(char *map, int size);
-void			set_player_stat(t_player *player, double dir_y, double p_x, double p_y);
-
+void			set_player_stat(t_player *player, double dir_y, double p_x,
+					double p_y);
 
 // READ_CUB.C
 bool			read_file(t_map *map, char *map_path);
@@ -165,15 +163,15 @@ bool			check_str(char *str, char *valid);
 
 // WALL_ERROR.C
 bool			check_line(char **line, int y, int x, int size_y);
-bool			correct_line(t_map *map, int y, int x);
-bool			ft_wall_error(t_map *map);
+bool			correct_line(t_global *global, int y, int x);
+bool			ft_wall_error(t_global *global);
 
 // RAYCASTING.C
 void			raycasting(t_ray *ray);
 
 // RENDU.C
-int				rendu(t_win *win);
-void			background(t_win *win);
+int				rendu(t_global *global);
+void			background(t_global *global);
 
 // FREE.C
 int				free_all(t_global *global);
@@ -182,7 +180,7 @@ int				win_close(t_global *data);
 
 // INIT_ALL.C
 void			init_map_struct(t_global *global);
-void			init_game_stat(t_win *win);
+void			init_game_stat(t_global *global);
 
 // MAIN.C
 
