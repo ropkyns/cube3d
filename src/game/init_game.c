@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 09:13:54 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:09:25 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
+
+static void	*read_xpm(t_global *global, char *path)
+{
+	void	*img;
+	int		i;
+
+	i = 0;
+	img = mlx_xpm_file_to_image(global->win->mlx_ptr, path, &i, &i);
+	if (!img)
+		print_error(ERROR_INIT_IMG);
+	return (img);
+}
+
+static void	ft_init_img(t_global *global)
+{
+	int	i;
+
+	i = 0;
+	global->img[0]->img = read_xpm(global, global->map->no_path);
+	global->img[1]->img = read_xpm(global, global->map->so_path);
+	global->img[2]->img = read_xpm(global, global->map->ea_path);
+	global->img[3]->img = read_xpm(global, global->map->we_path);
+	global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
+			global->map->lenght_map, global->map->height_map);
+	if (!global->img[4]->img)
+		print_error(ERROR_INIT_IMG);
+	while (i < 5)
+	{
+		global->img[i]->addr = mlx_get_data_addr(global->img[i]->img,
+				&global->img[i]->bpp, &global->img[i]->line_len,
+				&global->img[i]->endian);
+		if (!global->img[i]->addr)
+			print_error(ERROR_INIT_IMG);
+		i++;
+	}
+}
 
 int	ft_launch_game(t_global *global)
 {
@@ -22,7 +58,7 @@ int	ft_launch_game(t_global *global)
 			global->win->lenght_win, global->win->height_win, "Wolfromain3D");
 	if (!global->win->mlx_win)
 		return (print_error(ERROR_MLX), false);
-	// ft_init_img(win);
+	ft_init_img(global);
 	mlx_loop_hook(global->win->mlx_ptr, &render, global);
 	mlx_hook(global->win->mlx_win, 2, 1L << 0, key_handler, global);
 	mlx_hook(global->win->mlx_win, 17, 0, win_close, global);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 09:12:51 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:12:33 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void	background(t_global *global)
 		while (y < global->win->height_win)
 		{
 			if (y < global->win->height_win / 2)
-				mlx_pixel_put(global->win, global->win->mlx_win, x, y,
-					create_trgb(0, global->map->c_code[0],
-						global->map->c_code[1], global->map->c_code[2]));
+				;
 			else
-				mlx_pixel_put(global->win, global->win->mlx_win, x, y,
-					create_trgb(0, global->map->f_code[0],
-						global->map->f_code[1], global->map->f_code[2]));
+				;
 			y++;
 		}
 		x++;

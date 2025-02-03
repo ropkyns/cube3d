@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:28:54 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/27 12:09:34 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:43:16 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ void	print_error(int error)
 		ft_putstr_fd("Error\nInvalid input\n", 2);
 	else if (error == EMPTY_FILE)
 		ft_putstr_fd("Error\nEmpty file\n", 2);
+	else if (error == ERROR_INIT_IMG)
+		ft_putstr_fd("Error\nPath texture is incorrect\n", 2);
 }
