@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 15:17:15 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:18:12 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	*read_xpm(t_global *global, char *path, int n)
 	int		width;
 
 	img = mlx_xpm_file_to_image(global->win->mlx_ptr, path, &width, &height);
-	global->img[0]->height = height;
-	global->img[0]->width = width;
+	global->img[n]->height = height;
+	global->img[n]->width = width;
 	if (!img)
 		print_error(ERROR_INIT_IMG);
 	return (img);
