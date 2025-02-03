@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 14:46:27 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:17:15 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	ft_init_img(t_global *global)
 	global->img[1]->img = read_xpm(global, global->map->so_path, 1);
 	global->img[2]->img = read_xpm(global, global->map->we_path, 2);
 	global->img[3]->img = read_xpm(global, global->map->ea_path, 3);
-	global->img[4] = ft_calloc(sizeof(t_image), 1);
 	global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
 			global->map->lenght_map, global->map->height_map);
 	if (!global->img[4]->img)
