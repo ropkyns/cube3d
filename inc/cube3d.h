@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/03 10:36:28 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:41:38 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,17 @@ typedef struct s_map
 
 }				t_map;
 
-typedef struct s_img
+typedef struct s_image
 {
 	void		*img;
 	char		*addr;
 	int			bpp;
 	int			line_len;
 	int			endian;
+	int			height;
+	int			width;
 
-}				t_img;
+}				t_image;
 
 typedef struct s_global
 {
@@ -135,7 +137,7 @@ typedef struct s_global
 	t_player	*player;
 	t_win		*win;
 	t_ray		*ray;
-	t_img		*img[5];
+	t_image		*img[5];
 
 }				t_global;
 

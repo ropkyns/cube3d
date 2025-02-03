@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/31 17:01:03 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:50:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	get_next_wall(t_global *glob, t_ray *ray)
 	}
 }
 
-static void	get_height(t_ray *ray, 	t_player *player)
+static void	get_height(t_ray *ray, t_player *player)
 {
 	if (ray->side == WALL_E || ray->side == WALL_W)
 		ray->prep_wall_dist = ((double)ray->map_x - player->pos->x

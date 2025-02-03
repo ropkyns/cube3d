@@ -1,7 +1,7 @@
 NO ./texture/wall0.xpm
-SO ./path_to_the_south_texture
-EA ./path_to_the_east_texture
-WE ./path_to_the_west_texture
+SO ./texture/wall0.xpm
+EA ./texture/wall0.xpm
+WE ./texture/wall0.xpm
 
 C 225,30,0
 F 220,100,0
