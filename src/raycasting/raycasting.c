@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 16:20:23 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:34:45 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	init_values(t_ray *ray, t_player *player)
 {
-	ray->curr_x = player->pos->x;
 	ray->cam_x = (2 * ray->curr_x) / (double)WIN_LENGHT - 1;
 	ray->ray_dir = malloc(sizeof(t_pos));
 	ray->ray_dir->x = player->dir->x + player->plan_vect->x * ray->cam_x;
