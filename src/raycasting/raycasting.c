@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 09:50:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:20:23 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@ static void	init_values(t_ray *ray, t_player *player)
 {
 	ray->curr_x = player->pos->x;
 	ray->cam_x = (2 * ray->curr_x) / (double)WIN_LENGHT - 1;
+	ray->ray_dir = malloc(sizeof(t_pos));
 	ray->ray_dir->x = player->dir->x + player->plan_vect->x * ray->cam_x;
 	ray->ray_dir->y = player->dir->y + player->plan_vect->y * ray->cam_x;
 	ray->map_x = player->pos->x;
 	ray->map_y = player->pos->y;
+	ray->delta_dist = malloc(sizeof(t_pos));
 	ray->delta_dist->x = fabs(1 / ray->ray_dir->x);
 	ray->delta_dist->y = fabs(1 / ray->ray_dir->y);
 	ray->hit = 0;
+	ray->side_dist = malloc(sizeof(t_pos));
 }
 
 static void	get_step(t_ray *ray, t_player *player)
