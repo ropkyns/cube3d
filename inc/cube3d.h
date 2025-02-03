@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/01/31 15:55:17 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:13:01 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ bool			ft_wall_error(t_global *global);
 void			raycasting(t_global *glob);
 
 // RENDU.C
-int				rendu(t_global *global);
+int				render(t_global *global);
 void			background(t_global *global);
 
 // FREE.C

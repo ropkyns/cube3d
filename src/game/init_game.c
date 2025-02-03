@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/31 13:11:34 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:13:54 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_launch_game(t_global *global)
 	if (!global->win->mlx_win)
 		return (print_error(ERROR_MLX), false);
 	// ft_init_img(win);
-	mlx_loop_hook(global->win->mlx_ptr, &rendu, global);
+	mlx_loop_hook(global->win->mlx_ptr, &render, global);
 	mlx_hook(global->win->mlx_win, 2, 1L << 0, key_handler, global);
 	mlx_hook(global->win->mlx_win, 17, 0, win_close, global);
 	mlx_loop(global->win->mlx_ptr);

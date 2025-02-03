@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/31 17:13:02 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:12:51 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	background(t_global *global)
 	}
 }
 
-int	rendu(t_global *global)
+int	render(t_global *global)
 {
 	global->ray = ft_calloc(1, sizeof(t_ray));
 	background(global);
