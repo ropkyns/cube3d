@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 14:42:38 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:46:27 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,24 @@ static void	ft_init_img(t_global *global)
 	int	i;
 
 	i = 0;
-	global->img[0] = ft_calloc(sizeof(t_image), 1);
-	global->img[1] = ft_calloc(sizeof(t_image), 1);
-	global->img[2] = ft_calloc(sizeof(t_image), 1);
-	global->img[3] = ft_calloc(sizeof(t_image), 1);
 	global->img[0]->img = read_xpm(global, global->map->no_path, 0);
 	global->img[1]->img = read_xpm(global, global->map->so_path, 1);
 	global->img[2]->img = read_xpm(global, global->map->we_path, 2);
 	global->img[3]->img = read_xpm(global, global->map->ea_path, 3);
-	printf("AAAA");
-	fflush(stdout);
-	// global->img[4] = ft_calloc(sizeof(t_image), 1);
-	// global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
-	// 		global->map->lenght_map, global->map->height_map);
-	// if (!global->img[4]->img)
-	// 	print_error(ERROR_INIT_IMG);
-	// while (i < 5)
-	// {
-	// 	global->img[i]->addr = mlx_get_data_addr(global->img[i]->img,
-	// 			&global->img[i]->bpp, &global->img[i]->line_len,
-	// 			&global->img[i]->endian);
-	// 	if (!global->img[i]->addr)
-	// 		print_error(ERROR_INIT_IMG);
-	// 	i++;
-	// }
+	global->img[4] = ft_calloc(sizeof(t_image), 1);
+	global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
+			global->map->lenght_map, global->map->height_map);
+	if (!global->img[4]->img)
+		print_error(ERROR_INIT_IMG);
+	while (i < 5)
+	{
+		global->img[i]->addr = mlx_get_data_addr(global->img[i]->img,
+				&global->img[i]->bpp, &global->img[i]->line_len,
+				&global->img[i]->endian);
+		if (!global->img[i]->addr)
+			print_error(ERROR_INIT_IMG);
+		i++;
+	}
 }
 
 int	ft_launch_game(t_global *global)
