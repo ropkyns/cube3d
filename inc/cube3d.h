@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/03 11:41:38 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:30:58 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ void			raycasting(t_global *glob);
 // RENDU.C
 int				render(t_global *global);
 void			background(t_global *global);
+void			img_pix_put(t_global *global, int x, int y, int color);
 
 // FREE.C
 int				free_all(t_global *global);

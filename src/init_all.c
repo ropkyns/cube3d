@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/03 15:17:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:27:00 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_map_struct(t_global *global)
 	global->player->pos = ft_calloc(1, sizeof(t_pos));
 	global->player->dir = ft_calloc(1, sizeof(t_pos));
 	global->player->plan_vect = ft_calloc(1, sizeof(t_pos));
-	global->ray = ft_calloc(1, sizeof(t_ray));
 	global->win = ft_calloc(1, sizeof(t_win));
 	while (i < 5)
 		global->img[i++] = ft_calloc(1, sizeof(t_image));
