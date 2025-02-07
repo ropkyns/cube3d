@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/05 11:55:09 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:18:10 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ static void	*read_xpm(t_global *global, char *path, int n)
 	int		height;
 	int		width;
 
-	img = mlx_xpm_file_to_image(global->win->mlx_ptr, path, &width, &height);
-	global->img[n]->height = height;
-	global->img[n]->width = width;
+	img = mlx_xpm_file_to_image(global->win->mlx_ptr, path,
+			&global->img[n]->width, &global->img[n]->height);
 	if (!img)
 		print_error(ERROR_INIT_IMG);
 	return (img);
@@ -36,7 +35,7 @@ static void	ft_init_img(t_global *global)
 	global->img[2]->img = read_xpm(global, global->map->we_path, 2);
 	global->img[3]->img = read_xpm(global, global->map->ea_path, 3);
 	global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
-			global->map->lenght_map, global->map->height_map);
+			WIN_LENGHT, WIN_HEIGHT);
 	if (!global->img[4]->img)
 		print_error(ERROR_INIT_IMG);
 	while (i < 5)

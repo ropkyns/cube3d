@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/05 15:37:26 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:28:00 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	img_pix_put(t_global *global, int x, int y, int color)
 	if (y < 0 || y > global->win->height_win - 1 || x < 0
 		|| x > global->win->lenght_win - 1)
 		return ;
-	pixel = global->img[4]->addr + (y * global->img[4]->line_len + x * (global->img[4]->bpp / 8));
-	ft_printf("%d\n", global->img[4]->addr + (y * global->img[4]->line_len + x * (global->img[4]->bpp / 8)));
+	pixel = (global->img[4]->addr + (y * global->img[4]->line_len + x * (global->img[4]->bpp / 8)));
 	*(int *)pixel = color;
 }
 
@@ -58,5 +57,7 @@ int	render(t_global *global)
 	background(global);
 	while (global->ray->curr_x < WIN_LENGHT)
 		raycasting(global);
+	mlx_put_image_to_window(global->win->mlx_ptr,
+		global->win->mlx_win, global->img[4]->img, 0, 0);
 	return (0);
 }
