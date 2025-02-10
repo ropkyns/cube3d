@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/01/31 16:59:52 by paulmart         ###   ########.fr        #
+#    Updated: 2025/02/10 13:52:58 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRC			=	main.c init_all.c free.c \
 				game/init_game.c game/keycode.c \
 				parsing/error.c parsing/map.c parsing/check_args.c \
 				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
-				raycasting/raycasting.c raycasting/render.c
+				raycasting/raycasting.c raycasting/render.c raycasting/draw.c
 SRCS		=	$(addprefix $(SRC_PATH), $(SRC))
 
 #OBJ

@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 16:34:45 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:34:18 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ static void	get_height(t_ray *ray, t_player *player)
 		ray->prep_wall_dist = ((double)ray->map_y - player->pos->y
 				+ (1 - ray->step_y / 2) / ray->ray_dir->y);
 	ray->line_height = WIN_HEIGHT / ray->prep_wall_dist;
-	ray->draw_start = -ray->line_height / 2 + ((WIN_HEIGHT / 2));
+	ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 	if (ray->draw_start <= 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + ((WIN_HEIGHT / 2));
+	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
 	if (ray->draw_end >= WIN_HEIGHT)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
@@ -103,5 +103,6 @@ void	raycasting(t_global *glob)
 	get_step(glob->ray, glob->player);
 	get_next_wall(glob, glob->ray);
 	get_height(glob->ray, glob->player);
+	draw_texture(glob, glob->ray, glob->player);
 	glob->ray->curr_x++;
 }

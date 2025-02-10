@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/10 11:11:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:53:00 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,8 @@ bool			ft_wall_error(t_global *global);
 void			raycasting(t_global *glob);
 
 // DRAW.C
-void			draw_image(t_global *global, int x);
+void			draw_texture(t_global *glob, t_ray *ray, t_player *player);
+void			draw_line(t_global *glob, t_ray *ray, double wall_x, double *tex_pos, int e_img);
 
 // RENDU.C
 int				render(t_global *global);
