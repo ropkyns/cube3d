@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:18:10 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:37:22 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	ft_init_img(t_global *global)
 	global->img[1]->img = read_xpm(global, global->map->so_path, 1);
 	global->img[2]->img = read_xpm(global, global->map->we_path, 2);
 	global->img[3]->img = read_xpm(global, global->map->ea_path, 3);
-	global->img[4]->img = mlx_new_image(global->win->mlx_ptr,
-			WIN_LENGHT, WIN_HEIGHT);
+	global->img[4]->img = mlx_new_image(global->win->mlx_ptr, WIN_LENGHT,
+			WIN_HEIGHT);
 	if (!global->img[4]->img)
 		print_error(ERROR_INIT_IMG);
 	while (i < 5)

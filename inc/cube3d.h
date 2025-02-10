@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/07 16:15:10 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:11:08 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_player
 	t_pos		*pos;
 	t_pos		*dir;
 	t_pos		*plan_vect;
+	char		direction;
 	double		speed;
 	double		rotation_speed;
 }				t_player;
@@ -182,6 +183,9 @@ bool			ft_wall_error(t_global *global);
 
 // RAYCASTING.C
 void			raycasting(t_global *glob);
+
+// DRAW.C
+void			draw_image(t_global *global, int x);
 
 // RENDU.C
 int				render(t_global *global);

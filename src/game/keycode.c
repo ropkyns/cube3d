@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/09 12:05:09 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:37:40 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ static void	move(t_global *global, double next_x, double next_y, char sign)
 	}
 }
 
+static void	rotate(t_player *player, double rot_spd)
+{
+	double	tmp_dir_x;
+	double	tmp_plan_vect_x;
+
+	tmp_dir_x = player->dir->x;
+	tmp_plan_vect_x = player->plan_vect->x;
+	player->dir->x = player->dir->x * cos(rot_spd) - player->dir->y
+		* sin(rot_spd);
+	player->dir->y = tmp_dir_x * sin(rot_spd) + player->dir->y * cos(rot_spd);
+	player->plan_vect->x = player->plan_vect->x * cos(rot_spd)
+		- player->plan_vect->y * sin(rot_spd);
+	player->plan_vect->y = tmp_plan_vect_x * sin(rot_spd) + player->plan_vect->y
+		* cos(rot_spd);
+}
+
 int	key_handler(int keycode, t_global *global)
 {
 	if (keycode == XK_Escape)
@@ -55,9 +71,15 @@ int	key_handler(int keycode, t_global *global)
 	else if (keycode == XK_D || keycode == XK_d)
 		move(global, global->player->plan_vect->x * global->player->speed,
 			global->player->plan_vect->y * global->player->speed, '+');
-	else if (keycode == XK_Left)
-		;
-	else if (keycode == XK_Right)
-		;
+	else if ((keycode == XK_Left && (global->player->direction == 'N'
+				|| global->player->direction == 'S')) || (keycode == XK_Right
+			&& (global->player->direction == 'E'
+				|| global->player->direction == 'W')))
+		rotate(global->player, -global->player->rotation_speed);
+	else if ((keycode == XK_Left && (global->player->direction == 'E'
+				|| global->player->direction == 'W')) || (keycode == XK_Right
+			&& (global->player->direction == 'N'
+				|| global->player->direction == 'S')))
+		rotate(global->player, -global->player->rotation_speed);
 	return (true);
 }

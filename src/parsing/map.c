@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/01/31 13:15:22 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:03:27 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	start_player_pos(t_global *global, char direction, int i, int j)
 {
 	global->player->pos->x = (double)j;
 	global->player->pos->y = (double)i;
+	global->player->direction = direction;
 	if (direction == 'N')
 	{
 		global->player->dir->x = 0.00;
