@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/10 15:53:00 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/12 10:09:20 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ bool			correct_line(t_global *global, int y, int x);
 bool			ft_wall_error(t_global *global);
 
 // RAYCASTING.C
-void			raycasting(t_global *glob);
+void			raycasting(t_global *glob, t_ray *ray);
 
 // DRAW.C
 void			draw_texture(t_global *glob, t_ray *ray, t_player *player);

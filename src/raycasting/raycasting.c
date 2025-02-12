@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:45:34 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/10 16:34:18 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:48:04 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static void	get_next_wall(t_global *glob, t_ray *ray)
 			else
 				ray->side = WALL_N;
 		}
-		if (glob->map->map_tab[ray->map_y][ray->map_x] == '1')
+		if (glob->map->map_tab[ray->map_y][ray->map_x] == '1'
+				|| glob->map->map_tab[ray->map_y][ray->map_x] == ' ')
 			ray->hit = 1;
 	}
 }
@@ -84,10 +85,10 @@ static void	get_height(t_ray *ray, t_player *player)
 {
 	if (ray->side == WALL_E || ray->side == WALL_W)
 		ray->prep_wall_dist = ((double)ray->map_x - player->pos->x
-				+ (1 - ray->step_x / 2) / ray->ray_dir->x);
+				+ (1 - ray->step_x) / 2) / ray->ray_dir->x;
 	else
 		ray->prep_wall_dist = ((double)ray->map_y - player->pos->y
-				+ (1 - ray->step_y / 2) / ray->ray_dir->y);
+				+ (1 - ray->step_y) / 2) / ray->ray_dir->y;
 	ray->line_height = WIN_HEIGHT / ray->prep_wall_dist;
 	ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 	if (ray->draw_start <= 0)
@@ -97,12 +98,15 @@ static void	get_height(t_ray *ray, t_player *player)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-void	raycasting(t_global *glob)
+void	raycasting(t_global *glob, t_ray *ray)
 {
-	init_values(glob->ray, glob->player);
-	get_step(glob->ray, glob->player);
-	get_next_wall(glob, glob->ray);
-	get_height(glob->ray, glob->player);
-	draw_texture(glob, glob->ray, glob->player);
-	glob->ray->curr_x++;
+	t_player	*player;
+
+	player = glob->player;
+	init_values(ray, player);
+	get_step(ray, player);
+	get_next_wall(glob, ray);
+	get_height(ray, player);
+	draw_texture(glob, ray, player);
+	ray->curr_x++;
 }

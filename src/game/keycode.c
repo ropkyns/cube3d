@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/10 13:37:40 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/12 09:30:08 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int	key_handler(int keycode, t_global *global)
 				|| global->player->direction == 'W')) || (keycode == XK_Right
 			&& (global->player->direction == 'N'
 				|| global->player->direction == 'S')))
-		rotate(global->player, -global->player->rotation_speed);
+		rotate(global->player, global->player->rotation_speed);
 	return (true);
 }

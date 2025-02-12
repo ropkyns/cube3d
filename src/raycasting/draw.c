@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 09:27:30 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/10 15:55:32 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:04:13 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	draw_line(t_global *glob, t_ray *ray, double wall_x, double *tex_pos, int e
 	int		tex_y;
 	int		color;
 
-	tex_y = (int)*tex_pos & (128 -1);
-	*tex_pos += 1.0 * 128 / ray->line_height;
 	img = glob->img[e_img];
+	tex_y = (int)*tex_pos & (img->height -1);
+	*tex_pos += 1.0 * img->height / ray->line_height;
 	tex_x = ((int)wall_x * img->width);
 	if ((ray->side == WALL_W || ray->side == WALL_E)
 		&& ray->ray_dir->x > 0)
@@ -29,10 +29,8 @@ void	draw_line(t_global *glob, t_ray *ray, double wall_x, double *tex_pos, int e
 	else if ((ray->side == WALL_N || ray->side == WALL_S)
 		&& ray->ray_dir->y < 0)
 		tex_x = img->width - tex_x - 1;
-	// printf("%d\n", ray->curr_x);
-	// printf("%d\n", ray->draw_start);
 	color = *(int *)(img->addr
-			+ (ray->draw_start * img->line_len + ray->curr_x * (img->bpp / 8)));
+			+ (tex_y * img->line_len + tex_x * (img->bpp / 8)));
 	img_pix_put(glob, ray->curr_x, ray->draw_start, color);
 }
 
@@ -41,16 +39,14 @@ void	draw_texture(t_global *glob, t_ray *ray, t_player *player)
 	double	wall_x;
 	double	tex_pos;
 
-	// printf("%d\n", (int)wall_x);
 	if (ray->side == WALL_E || ray->side == WALL_W)
 		wall_x = player->pos->y + ray->prep_wall_dist * ray->ray_dir->y;
 	else
 		wall_x = player->pos->x + ray->prep_wall_dist * ray->ray_dir->x;
 	wall_x -= floor(wall_x);
-	// printf("start : %d\n", ray->draw_start);
-	// printf("end : %d\n", ray->draw_end);
 	tex_pos = (ray->draw_start - glob->win->height_win / 2
-			+ ray->line_height / 2) * (1.0 * 128 / ray->line_height);
+			+ ray->line_height / 2)
+		* (1.0 * glob->img[0]->height / ray->line_height);
 	while (ray->draw_start < ray->draw_end)
 	{
 		if (ray->side == WALL_N)
