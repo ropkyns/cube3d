@@ -6,13 +6,13 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/10 13:37:22 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:34:27 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
-static void	*read_xpm(t_global *global, char *path, int n)
+void	*read_xpm(t_global *global, char *path, int n)
 {
 	void	*img;
 	int		height;
@@ -62,6 +62,8 @@ int	ft_launch_game(t_global *global)
 	ft_init_img(global);
 	mlx_loop_hook(global->win->mlx_ptr, &render, global);
 	mlx_hook(global->win->mlx_win, 2, 1L << 0, key_handler, global);
+	mlx_hook(global->win->mlx_win, 6, 1L << 6, move_mouse, global);
+	// mlx_mouse_hook(global->win->mlx_win, mouse_troll, global);
 	mlx_hook(global->win->mlx_win, 17, 0, win_close, global);
 	mlx_loop(global->win->mlx_ptr);
 	return (true);

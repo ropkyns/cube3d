@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/10 11:39:39 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:07:13 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	init_game_stat(t_global *global)
 	global->win->lenght_win = WIN_LENGHT;
 	global->win->height_win = WIN_HEIGHT;
 	global->player->speed = 0.20;
-	global->player->rotation_speed = 0.20;
+	global->player->rotation_speed = 0.10;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/12 10:09:20 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:39:12 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int				ft_launch_game(t_global *global);
 
 // KEYCODE.C
 int				key_handler(int keycode, t_global *global);
+void			move_mouse(int x, int y, t_global *global);
 
 // CHECK_ARGS.C
 // bool		is_dir(char *arg);
@@ -186,7 +187,8 @@ void			raycasting(t_global *glob, t_ray *ray);
 
 // DRAW.C
 void			draw_texture(t_global *glob, t_ray *ray, t_player *player);
-void			draw_line(t_global *glob, t_ray *ray, double wall_x, double *tex_pos, int e_img);
+void			draw_line(t_global *glob, t_ray *ray, double wall_x,
+					double *tex_pos, int e_img);
 
 // RENDU.C
 int				render(t_global *global);
