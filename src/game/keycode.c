@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/13 01:39:15 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:14:11 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,27 @@ static void	move(t_global *global, double next_x, double next_y, char sign)
 	if (sign == '+')
 	{
 		if (global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
-				+ next_x)] != '1')
+				+ next_x)] != '1'
+			&& global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
+				+ next_x)] != ' ')
 			global->player->pos->x += next_x;
 		if (global->map->map_tab[(int)(global->player->pos->y
-				+ next_y)][(int)global->player->pos->x] != '1')
+				+ next_y)][(int)global->player->pos->x] != '1'
+			&& global->map->map_tab[(int)(global->player->pos->y
+				+ next_y)][(int)global->player->pos->x] != ' ')
 			global->player->pos->y += next_y;
 	}
 	else if (sign == '-')
 	{
 		if (global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
-				- next_x)] != '1')
+				- next_x)] != '1'
+			&& global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
+				- next_x)] != ' ')
 			global->player->pos->x -= next_x;
 		if (global->map->map_tab[(int)(global->player->pos->y
-				- next_y)][(int)global->player->pos->x] != '1')
+				- next_y)][(int)global->player->pos->x] != '1'
+			&& global->map->map_tab[(int)(global->player->pos->y
+				- next_y)][(int)global->player->pos->x] != ' ')
 			global->player->pos->y -= next_y;
 	}
 }
@@ -84,7 +92,7 @@ int	key_handler(int keycode, t_global *global)
 	return (true);
 }
 
-void	move_mouse(int x, int y, t_global *global)
+int	move_mouse(int x, int y, t_global *global)
 {
 	(void)y;
 	if (global->player->direction == 'N' || global->player->direction == 'S')
@@ -101,4 +109,5 @@ void	move_mouse(int x, int y, t_global *global)
 		else if (x < WIN_LENGHT / 6)
 			rotate(global->player, global->player->rotation_speed / 3);
 	}
+	return (0);
 }

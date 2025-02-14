@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/13 01:39:12 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/14 09:45:46 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int				ft_launch_game(t_global *global);
 
 // KEYCODE.C
 int				key_handler(int keycode, t_global *global);
-void			move_mouse(int x, int y, t_global *global);
+int				move_mouse(int x, int y, t_global *global);
 
 // CHECK_ARGS.C
 // bool		is_dir(char *arg);
