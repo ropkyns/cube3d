@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/12 10:08:04 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:51:40 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	render(t_global *global)
 	t_ray	*ray;
 
 	ray = ft_calloc(1, sizeof(t_ray));
+	if (!ray)
+		return (1);
+	global->ray = ray;
 	background(global);
 	while (ray->curr_x < WIN_LENGHT)
 		raycasting(global, ray);
