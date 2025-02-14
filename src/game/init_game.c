@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/14 09:44:08 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:54:55 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	*read_xpm(t_global *global, char *path, int n)
 	img = mlx_xpm_file_to_image(global->win->mlx_ptr, path,
 			&global->img[n]->width, &global->img[n]->height);
 	if (!img)
+	{
 		print_error(ERROR_INIT_IMG);
+		return (NULL);
+	}
 	return (img);
 }
 
@@ -37,14 +40,20 @@ static void	ft_init_img(t_global *global)
 	global->img[4]->img = mlx_new_image(global->win->mlx_ptr, WIN_LENGHT,
 			WIN_HEIGHT);
 	if (!global->img[4]->img)
+	{
 		print_error(ERROR_INIT_IMG);
+		free_all(global);
+	}
 	while (i < 5)
 	{
 		global->img[i]->addr = mlx_get_data_addr(global->img[i]->img,
 				&global->img[i]->bpp, &global->img[i]->line_len,
 				&global->img[i]->endian);
 		if (!global->img[i]->addr)
+		{
 			print_error(ERROR_INIT_IMG);
+			free_all(global);
+		}
 		i++;
 	}
 }
