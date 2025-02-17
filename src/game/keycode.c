@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/14 10:14:11 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:51:05 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	move(t_global *global, double next_x, double next_y, char sign)
 	old_y = (int)global->player->pos->y;
 	if (sign == '+')
 	{
-		if (global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
-				+ next_x)] != '1'
-			&& global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
-				+ next_x)] != ' ')
+		if (global->map->map_tab[(int)global->player->pos->y]
+			[(int)(global->player->pos->x + next_x)] != '1'
+			&& global->map->map_tab[(int)global->player->pos->y]
+				[(int)(global->player->pos->x + next_x)] != ' ')
 			global->player->pos->x += next_x;
 		if (global->map->map_tab[(int)(global->player->pos->y
 				+ next_y)][(int)global->player->pos->x] != '1'
@@ -34,9 +34,10 @@ static void	move(t_global *global, double next_x, double next_y, char sign)
 	}
 	else if (sign == '-')
 	{
-		if (global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
-				- next_x)] != '1'
-			&& global->map->map_tab[(int)global->player->pos->y][(int)(global->player->pos->x
+		if (global->map->map_tab[(int)global->player->pos->y]
+			[(int)(global->player->pos->x - next_x)] != '1'
+			&& global->map->map_tab[(int)global->player->pos->y]
+			[(int)(global->player->pos->x
 				- next_x)] != ' ')
 			global->player->pos->x -= next_x;
 		if (global->map->map_tab[(int)(global->player->pos->y

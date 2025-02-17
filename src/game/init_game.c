@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 09:26:32 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:49:05 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_init_img(t_global *global)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	global->img[0]->img = read_xpm(global, global->map->no_path, 0);
 	global->img[1]->img = read_xpm(global, global->map->so_path, 1);
 	global->img[2]->img = read_xpm(global, global->map->we_path, 2);
@@ -44,7 +44,7 @@ static void	ft_init_img(t_global *global)
 		print_error(ERROR_INIT_IMG);
 		free_all(global);
 	}
-	while (i < 5)
+	while (++i < 5)
 	{
 		global->img[i]->addr = mlx_get_data_addr(global->img[i]->img,
 				&global->img[i]->bpp, &global->img[i]->line_len,
@@ -54,7 +54,6 @@ static void	ft_init_img(t_global *global)
 			print_error(ERROR_INIT_IMG);
 			free_all(global);
 		}
-		i++;
 	}
 }
 

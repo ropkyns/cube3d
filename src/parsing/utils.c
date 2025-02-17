@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/01/27 10:57:11 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:54:22 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	ft_isdigit_str(char *str)
 
 bool	check_str(char *str, char *valid)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

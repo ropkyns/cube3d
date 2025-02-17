@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 10:55:51 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:08:08 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,27 +78,6 @@ static void	free_struct(t_global *global)
 		free(global->player->dir);
 		free(global->player->plan_vect);
 		free(global->player);
-	}
-	// if (global->ray)
-	// {
-	// 	free(global->ray->ray_dir);
-	// 	free(global->ray->side_dist);
-	// 	free(global->ray->delta_dist);
-	// 	free(global->ray);
-	// }
-}
-
-void	free_ray(t_ray *ray)
-{
-	if (ray)
-	{
-		// if (ray->ray_dir)
-		// 	free(ray->ray_dir);
-		// if (ray->side_dist)
-		// 	free(ray->side_dist);
-		// if (ray->delta_dist)
-		// 	free(ray->delta_dist);
-		free(ray);
 	}
 }
 

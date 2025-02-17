@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/17 11:37:40 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:17:18 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ bool	read_file(t_map *map, char *map_path)
 		while (is_space(line[0]) && line[1])
 			line = &line[1];
 		if (!get_path(line, map) && !get_color_code(line, map))
-			return (print_error(INVALID_INFO), false);
+			return (free(line), print_error(INVALID_INFO), false);
 		free(line);
 	}
 	if (!get_map(map, fd, map_path))

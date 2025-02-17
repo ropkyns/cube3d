@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 09:40:52 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:08:35 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,8 +186,7 @@ void			raycasting(t_global *glob, t_ray *ray);
 
 // DRAW.C
 void			draw_texture(t_global *glob, t_ray *ray, t_player *player);
-void			draw_line(t_global *glob, t_ray *ray, double wall_x,
-					double *tex_pos, int e_img);
+void			draw_line(t_global *glob, t_ray *ray, double wall_x, int e_img);
 
 // RENDU.C
 int				render(t_global *global);
@@ -197,7 +196,6 @@ void			img_pix_put(t_global *global, int x, int y, int color);
 // FREE.C
 int				free_all(t_global *global);
 void			free_tab(char **tab);
-void			free_ray(t_ray *ray);
 
 // INIT_ALL.C
 void			init_map_struct(t_global *global);
