@@ -1,122 +1,99 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus copy.c                   :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 10:37:59 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/01/15 12:26:19 by rbouquet         ###   ########.fr       */
+/*   Created: 2025/02/17 10:21:11 by rbouquet          #+#    #+#             */
+/*   Updated: 2025/02/17 10:24:36 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	gnl_strlen(const char *s)
+int	ft_strchr_gnl(const char *s, int c)
 {
-	int	count;
-
-	count = 0;
 	if (!s)
 		return (0);
-	while (s[count] != '\0')
-		count++;
-	return (count);
-}
-
-char	*gnl_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	s_len;
-	char	*substr;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	s_len = gnl_strlen(s);
-	i = 0;
-	if (len > s_len)
-		len = s_len;
-	if (start >= s_len)
+	while (*s)
 	{
-		substr = (char *)malloc(1);
-		if (substr == NULL)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
-	}
-	substr = (char *)malloc(len + 1);
-	if (substr == NULL)
-		return (NULL);
-	while (i++ < start)
+		if (*s == (char)c)
+			return (1);
 		s++;
-	gnl_strlcpy(substr, s, len + 1);
-	return (substr);
-}
-
-size_t	gnl_strlcpy(char *dst, const char *src, size_t size)
-{
-	unsigned int	i;
-	size_t			size_src;
-
-	i = 0;
-	if (src == NULL)
-		return (0);
-	size_src = gnl_strlen(src);
-	if ((int)size < 0)
-		size = size_src + 1;
-	if (size >= 2 && size_src != 0)
-	{
-		while (i < size - 1)
-		{
-			if (i < size_src)
-				dst[i] = src[i];
-			else if (i == size_src)
-				dst[i] = '\0';
-			i++;
-		}
 	}
-	if (size != 0)
-		dst[i] = '\0';
-	return (size_src);
+	return (0);
 }
 
-int	gnl_strchr_i(const char *s, int c)
+char	*ft_strjoin_gnl(char *s1, char const *s2)
 {
-	unsigned char	c_unsigned;
-	int				i;
+	int		len;
+	char	*concat;
+	int		i;
+	int		j;
 
+	len = ft_strlen_gnl(s1) + ft_strlen_gnl((char *)s2);
+	concat = malloc(sizeof(char) * (len + 1));
+	if (concat == NULL)
+		return (NULL);
 	i = 0;
-	if (!s)
-		return (-1);
-	c_unsigned = (unsigned char)c;
-	while (s[i] != '\0')
+	while (s1[i])
 	{
-		if (s[i] == c_unsigned)
-			return (i);
+		concat[i] = s1[i];
 		i++;
 	}
-	if (c_unsigned == '\0')
-		return (i);
-	return (-1);
+	j = 0;
+	while (s2[j])
+	{
+		concat[i] = s2[j];
+		i++;
+		j++;
+	}
+	concat[i] = '\0';
+	free(s1);
+	return (concat);
 }
 
-size_t	gnl_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlen_gnl(const char *str)
 {
-	char			*ptr;
-	unsigned int	i;
+	int	i;
 
-	if (size < gnl_strlen(dst))
-		return (gnl_strlen(src) + size);
-	ptr = dst + gnl_strlen(dst);
-	i = gnl_strlen(dst);
-	while (i < size - 1 && *src != '\0' && size >= 2)
-	{
-		*ptr = *src;
-		ptr++;
-		src++;
+	i = 0;
+	while (str[i] != '\0')
 		i++;
+	return (i);
+}
+
+char	*ft_strdup_gnl(const char *s)
+{
+	char	*dup;
+	size_t	len;
+
+	len = ft_strlen_gnl((char *)s);
+	dup = malloc(sizeof(char) * (len + 1));
+	if (dup == NULL)
+		return (NULL);
+	ft_memcpy(dup, (char *)s, len);
+	dup[len] = '\0';
+	return (dup);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	int					i;
+	unsigned char		*destination;
+	const unsigned char	*source;
+
+	i = 0;
+	destination = (unsigned char *)dest;
+	source = (const unsigned char *)src;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	while (n > 0)
+	{
+		destination[i] = source[i];
+		i++;
+		n--;
 	}
-	if (size != 0)
-		*ptr = '\0';
-	return (gnl_strlen(dst) + gnl_strlen(src));
+	return (destination);
 }

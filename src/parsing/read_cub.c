@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/17 10:09:15 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:37:40 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,22 @@ static bool	get_path(char *line, t_map *map)
 	return (true);
 }
 
+static void	free_color(char **color)
+{
+	int	i;
+
+	i = -1;
+	while (color[++i])
+		free(color[i]);
+	free(color);
+}
+
 static bool	get_color_code(char *line, t_map *map)
 {
 	char	**color;
 	int		*code;
 	int		i;
 
-	i = 0;
 	if (ft_strncmp(line, "C ", 2) != 0 && ft_strncmp(line, "F ", 2) != 0)
 		return (false);
 	code = (int *)malloc(sizeof(int) * 3);
@@ -60,32 +69,27 @@ static bool	get_color_code(char *line, t_map *map)
 			if (i == 2)
 				color[i][ft_strlen(color[i]) - 1] = '\0';
 			if (!ft_isdigit_str(color[i]))
-				return (free(color), free(code), false);
+				return (free_color(color), free(code), false);
 			code[i] = ft_atoi(color[i]);
 			if (code[i] > 255 || code[i] < 0)
-				return (free(color), free(code), false);
+				return (free_color(color), free(code), false);
 		}
 		if (ft_strncmp(line, "C ", 2) == 0 && !map->c_code)
-		{
-			map->c_code = (int *)malloc(sizeof(int) * 3);
 			map->c_code = code;
-		}
 		else if (ft_strncmp(line, "F ", 2) == 0 && !map->f_code)
-		{
-			map->f_code = (int *)malloc(sizeof(int) * 3);
 			map->f_code = code;
-		}
 		else
 			return (free(color), free(code), false);
 	}
 	else
-		return (free(color), false);
-	return (free(color), free(code), true);
+		return (free_color(color), free(code), false);
+	return (free_color(color), true);
 }
 
 char	**maploc(int fd, int count_line)
 {
 	char	**tab;
+	char	*line;
 	int		i;
 
 	tab = malloc(sizeof(char *) * (count_line + 1));
@@ -96,12 +100,16 @@ char	**maploc(int fd, int count_line)
 	{
 		tab[i] = get_next_line(fd);
 		if (tab[i] == NULL)
-		{
-			free_tab(tab);
-			return (NULL);
-		}
+			return (free_tab(tab), NULL);
 	}
 	tab[i] = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
 	return (tab);
 }
 
@@ -114,14 +122,17 @@ bool	get_map(t_map *map, int fd, char *path)
 	line = get_next_line(fd);
 	while (ft_strcmp(line, "\n") == 0)
 	{
+		free(line);
 		line = get_next_line(fd);
 		map->gnl_count++;
 	}
 	while (line != NULL && ft_strcmp(line, "\n") != 0)
 	{
+		free(line);
 		count_line++;
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	fd = open(path, O_RDONLY);
 	while (map->gnl_count-- > 1)

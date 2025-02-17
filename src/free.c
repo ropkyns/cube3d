@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 10:02:26 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:55:51 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	free_tab(char **tab)
 
 	if (!tab)
 		return ;
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
 	free(tab);
 }
 

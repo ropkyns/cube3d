@@ -12,93 +12,101 @@
 
 #include "libft.h"
 
+char	*get_next_line(int fd);
+
+char	*get_line(int fd, char *stock)
+{
+	char	*buf;
+	int		nb_line;
+
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	nb_line = 1;
+	while (ft_strchr_gnl(stock, '\n') == 0 && nb_line != 0)
+	{
+		nb_line = read(fd, buf, BUFFER_SIZE);
+		if (nb_line == -1)
+		{
+			free(buf);
+			free(stock);
+			return (NULL);
+		}
+		buf[nb_line] = '\0';
+		if (!stock)
+			stock = ft_strdup_gnl(buf);
+		else
+			stock = ft_strjoin_gnl(stock, buf);
+	}
+	free(buf);
+	return (stock);
+}
+
+char	*putline(char *stock)
+{
+	int		len_line;
+	char	*next_line;
+
+	len_line = 0;
+	if (!(*stock))
+		return (NULL);
+	while (stock[len_line] != '\n' && stock[len_line])
+		len_line++;
+	next_line = malloc(sizeof(char) * (len_line + 2));
+	if (!next_line)
+		return (NULL);
+	len_line = 0;
+	while (stock[len_line] != '\n' && stock[len_line])
+	{
+		next_line[len_line] = stock[len_line];
+		len_line++;
+	}
+	if (stock[len_line] == '\n')
+	{
+		next_line[len_line] = stock[len_line];
+		len_line++;
+	}
+	next_line[len_line] = '\0';
+	return (next_line);
+}
+
+char	*del_for_next_line(char *stock)
+{
+	char	*tmp;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (stock[i] != '\0' && stock[i] != '\n')
+		i++;
+	if (!stock[i])
+	{
+		free(stock);
+		return (NULL);
+	}
+	i++;
+	tmp = malloc(sizeof(char) * (ft_strlen_gnl(stock) - i + 1));
+	if (!tmp)
+		return (NULL);
+	j = 0;
+	while (stock[i])
+		tmp[j++] = stock[i++];
+	tmp[j] = '\0';
+	free(stock);
+	return (tmp);
+}
+
 char	*get_next_line(int fd)
 {
-	static char	*buf[4096];
-	char		*line;
-	size_t		old_len;
+	static char	*stock;
+	char		*next_line;
 
-	if (fd < 0 || fd > 4095 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = NULL;
-	if (gnl_strchr_i(buf[fd], '\n') == -1)
-	{
-		old_len = gnl_strlen(buf[fd]);
-		buf[fd] = gnl_expand_buffer(buf[fd], fd);
-		if (old_len == gnl_strlen(buf[fd]) && buf[fd])
-			line = gnl_substr(buf[fd], 0, gnl_strlen(buf[fd]));
-	}
-	if (!buf[fd])
+	stock = get_line(fd, stock);
+	if (!stock)
 		return (NULL);
-	if (!line && gnl_strchr_i(buf[fd], '\n') != -1)
-		line = gnl_substr(buf[fd], 0, gnl_strchr_i(buf[fd], '\n') + 1);
-	if (line)
-	{
-		buf[fd] = gnl_shrink_buffer(buf[fd], line);
-		return (line);
-	}
-	return (get_next_line(fd));
-}
-
-char	*gnl_shrink_buffer(char *buf, char *line)
-{
-	char	*newbuf;
-	int		line_len;
-
-	if (!buf || !line)
-		return (buf);
-	line_len = gnl_strlen(line);
-	if ((int)gnl_strlen(buf) == line_len)
-	{
-		free(buf);
-		return (NULL);
-	}
-	newbuf = gnl_substr(buf, line_len, gnl_strlen(buf) - line_len);
-	free(buf);
-	return (newbuf);
-}
-
-char	*gnl_expand_buffer(char *buf, int fd)
-{
-	char	*newbuf;
-	int		newlen;
-	char	*aux;
-
-	aux = gnl_newread(fd);
-	if (!aux)
-		return (NULL);
-	if (!aux[0])
-	{
-		free(aux);
-		return (buf);
-	}
-	if (!buf)
-		return (aux);
-	newlen = gnl_strlen(buf) + gnl_strlen(aux);
-	newbuf = malloc(newlen + 1);
-	if (!newbuf)
-		return (NULL);
-	gnl_strlcpy(newbuf, buf, newlen + 1);
-	gnl_strlcat(newbuf, aux, newlen + 1);
-	free(buf);
-	free(aux);
-	return (newbuf);
-}
-
-char	*gnl_newread(int fd)
-{
-	char	*aux;
-	int		nbytes;
-
-	aux = malloc(BUFFER_SIZE + 1);
-	if (!aux)
-		return (NULL);
-	nbytes = read(fd, aux, BUFFER_SIZE);
-	if (nbytes < 0)
-	{
-		free(aux);
-		return (NULL);
-	}
-	aux[nbytes] = '\0';
-	return (aux);
+	next_line = putline(stock);
+	stock = del_for_next_line(stock);
+	return (next_line);
 }

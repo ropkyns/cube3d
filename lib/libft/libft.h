@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchen <jchen@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:18:22 by mjameau           #+#    #+#             */
-/*   Updated: 2025/01/11 11:17:52 by jchen            ###   ########.fr       */
+/*   Updated: 2025/02/17 10:24:41 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,13 @@ int					ft_print_di(int n);
 # endif
 
 char				*get_next_line(int fd);
-char				*gnl_shrink_buffer(char *buf, char *line);
-char				*gnl_expand_buffer(char *buf, int fd);
-char				*gnl_newread(int fd);
-
-size_t				gnl_strlen(const char *s);
-char				*gnl_substr(char const *s, unsigned int start, size_t len);
-size_t				gnl_strlcpy(char *dst, const char *src, size_t size);
-int					gnl_strchr_i(const char *s, int c);
-size_t				gnl_strlcat(char *dst, const char *src, size_t size);
+char				*ft_strjoin_gnl(char *s1, char const *s2);
+size_t				ft_strlen_gnl(const char *str);
+char				*ft_strdup_gnl(const char *s);
+int					ft_strchr_gnl(const char *s, int c);
+char				*del_for_next_line(char *stock);
+char				*putline(char *stock);
+char				*get_line(int fd, char *stock);
+void				*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
