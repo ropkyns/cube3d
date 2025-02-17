@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 12:08:35 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:59:21 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,13 +168,13 @@ void			set_player_stat(t_player *player, double dir_y, double p_x,
 // READ_CUB.C
 bool			read_file(t_map *map, char *map_path);
 bool			get_map(t_map *map, int fd, char *path);
-char			**maploc(int fd, int count_line);
 
 // UTILS.C
 bool			is_valid_char(char c, char *valid_char);
 bool			is_space(char c);
 bool			ft_isdigit_str(char *str);
 bool			check_str(char *str, char *valid);
+char			**maploc(int fd, int count_line);
 
 // WALL_ERROR.C
 bool			check_line(char **line, int y, int x, int size_y);

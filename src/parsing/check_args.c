@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/17 09:18:22 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:13:40 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,10 @@ int	test_map(char *argv, t_global *global)
 	char	test;
 
 	if (!is_good_file(argv))
-	{
-		print_error(BAD_EXTENSION);
-		return (false);
-	}
+		return (print_error(BAD_EXTENSION), false);
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-	{
-		print_error(OPEN_FAILED);
-		return (false);
-	}
+		return (print_error(OPEN_FAILED), false);
 	result = read(fd, &test, 1);
 	if (result <= 0)
 	{
@@ -47,10 +41,10 @@ int	test_map(char *argv, t_global *global)
 			print_error(EMPTY_FILE);
 		else if (result < 0)
 			print_error(INVALID_INPUT);
-		close(fd);
-		return (false);
+		return (close(fd), false);
 	}
 	close(fd);
+	global->map->gnl_count = 1;
 	if (!read_file(global->map, argv))
 		return (false);
 	if (!ft_resize_map(global))

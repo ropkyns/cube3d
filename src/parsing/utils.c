@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:54:59 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 11:54:22 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:59:03 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,31 @@ bool	check_str(char *str, char *valid)
 		i++;
 	}
 	return (true);
+}
+
+char	**maploc(int fd, int count_line)
+{
+	char	**tab;
+	char	*line;
+	int		i;
+
+	tab = malloc(sizeof(char *) * (count_line + 1));
+	if (tab == NULL)
+		return (NULL);
+	i = -1;
+	while (count_line != ++i)
+	{
+		tab[i] = get_next_line(fd);
+		if (tab[i] == NULL)
+			return (free_tab(tab), NULL);
+	}
+	tab[i] = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (tab);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 12:20:28 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:56:23 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	set_player_stat(t_player *player, double dir_y, double p_x, double p_y)
 
 void	start_player_pos(t_global *global, char direction, int i, int j)
 {
-	global->player->pos->x = (double)j;
-	global->player->pos->y = (double)i;
+	global->player->pos->x = (double)j + 0.5;
+	global->player->pos->y = (double)i + 0.5;
 	global->player->direction = direction;
 	if (direction == 'N')
 	{
@@ -115,12 +115,9 @@ char	*ft_resize_line(char *map, int size)
 	tmp_line = malloc(sizeof(char) * (size + 1));
 	if (!tmp_line)
 		return (NULL);
-	i = 0;
-	while (map[i] && map[i] != '\n' && i < size - 1)
-	{
+	i = -1;
+	while (map[++i] && map[i] != '\n' && i < size - 1)
 		tmp_line[i] = map[i];
-		i++;
-	}
 	while (i < size - 1)
 	{
 		tmp_line[i] = ' ';

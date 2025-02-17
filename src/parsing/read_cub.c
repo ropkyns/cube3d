@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/17 12:17:18 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:09:50 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,6 @@ static bool	get_color_code(char *line, t_map *map)
 	return (free_color(color), true);
 }
 
-char	**maploc(int fd, int count_line)
-{
-	char	**tab;
-	char	*line;
-	int		i;
-
-	tab = malloc(sizeof(char *) * (count_line + 1));
-	if (tab == NULL)
-		return (NULL);
-	i = -1;
-	while (count_line != ++i)
-	{
-		tab[i] = get_next_line(fd);
-		if (tab[i] == NULL)
-			return (free_tab(tab), NULL);
-	}
-	tab[i] = NULL;
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (tab);
-}
-
 bool	get_map(t_map *map, int fd, char *path)
 {
 	char	*line;
@@ -154,7 +127,6 @@ bool	read_file(t_map *map, char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	n = -1;
-	map->gnl_count = 1;
 	while (++n <= 5)
 	{
 		line = get_next_line(fd);
@@ -168,11 +140,10 @@ bool	read_file(t_map *map, char *map_path)
 		while (is_space(line[0]) && line[1])
 			line = &line[1];
 		if (!get_path(line, map) && !get_color_code(line, map))
-			return (free(line), print_error(INVALID_INFO), false);
+			return (close(fd), free(line), print_error(INVALID_INFO), false);
 		free(line);
 	}
 	if (!get_map(map, fd, map_path))
-		return (print_error(INVALID_INFO), false);
-	close(fd);
-	return (true);
+		return (close(fd), print_error(INVALID_INFO), false);
+	return (close(fd), true);
 }
