@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/17 17:59:06 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:10:50 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	init_game_stat(t_global *global)
 {
 	global->win->lenght_win = WIN_LENGHT;
 	global->win->height_win = WIN_HEIGHT;
-	global->player->speed = 0.10;
-	global->player->rotation_speed = 0.05;
+	global->player->speed = 0.05;
+	global->player->rotation_speed = 0.03;
 }
