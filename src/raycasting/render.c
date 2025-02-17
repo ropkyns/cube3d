@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:28:39 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 12:08:24 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:29:50 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	render(t_global *global)
 	mlx_put_image_to_window(global->win->mlx_ptr, global->win->mlx_win,
 		global->img[4]->img, 0, 0);
 	free(ray);
+	execute_move(global, global->control);
 	return (0);
 }

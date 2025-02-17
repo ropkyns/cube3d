@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 11:49:05 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:37:10 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	ft_launch_game(t_global *global)
 	ft_init_img(global);
 	mlx_loop_hook(global->win->mlx_ptr, &render, global);
 	mlx_hook(global->win->mlx_win, 2, 1L << 0, key_handler, global);
+	mlx_hook(global->win->mlx_win, 3, 1L << 1, key_release, global);
 	mlx_hook(global->win->mlx_win, 6, 1L << 6, move_mouse, global);
 	mlx_hook(global->win->mlx_win, 17, 0, free_all, global);
 	mlx_loop(global->win->mlx_ptr);

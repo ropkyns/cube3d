@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 12:08:08 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:00:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	free_all(t_global *global)
 	if (!global)
 		return (0);
 	free_struct(global);
+	free(global->control);
 	free_win(global);
 	free(global);
 	exit(0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/14 18:08:10 by palu             ###   ########.fr       */
+/*   Updated: 2025/02/17 17:59:06 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	init_map_struct(t_global *global)
 		global->img[i++] = ft_calloc(1, sizeof(t_image));
 	global->map->column_map = 0;
 	global->map->line_map = 0;
+	global->control = ft_calloc(1, sizeof(t_control));
 }
 
 void	init_game_stat(t_global *global)
 {
 	global->win->lenght_win = WIN_LENGHT;
 	global->win->height_win = WIN_HEIGHT;
-	global->player->speed = 0.20;
-	global->player->rotation_speed = 0.10;
+	global->player->speed = 0.10;
+	global->player->rotation_speed = 0.05;
 }

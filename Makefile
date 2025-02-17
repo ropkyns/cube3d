@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/02/10 13:52:58 by paulmart         ###   ########.fr        #
+#    Updated: 2025/02/17 17:01:06 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ MLX			=	$(addprefix $(MLX_PATH), $(MLX_NAME))
 #SRC
 SRC_PATH 	=	src/
 SRC			=	main.c init_all.c free.c \
-				game/init_game.c game/keycode.c \
+				game/init_game.c game/keycode.c game/move.c \
 				parsing/error.c parsing/map.c parsing/check_args.c \
 				parsing/utils.c parsing/wall_error.c parsing/read_cub.c \
 				raycasting/raycasting.c raycasting/render.c raycasting/draw.c

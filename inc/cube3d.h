@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 15:59:21 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:37:00 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,16 @@ typedef struct s_image
 
 }				t_image;
 
+typedef struct s_control
+{
+	int			forward;
+	int			backward;
+	int			right;
+	int			left;
+	int			rotation_left;
+	int			rotation_right;
+}				t_control;
+
 typedef struct s_global
 {
 	char		*line;
@@ -136,7 +146,7 @@ typedef struct s_global
 	t_map		*map;
 	t_player	*player;
 	t_win		*win;
-	// t_ray		*ray;
+	t_control	*control;
 	t_image		*img[5];
 
 }				t_global;
@@ -144,9 +154,18 @@ typedef struct s_global
 // INIT_GAME.C
 int				ft_launch_game(t_global *global);
 
+// MOVE.C
+void			move_forward(t_global *global, double next_x, double next_y);
+void			move_backward(t_global *global, double next_x, double next_y);
+void			move_right(t_global *global, double next_x, double next_y);
+void			move_left(t_global *global, double next_x, double next_y);
+void			rotate(t_player *player, double rot_spd);
+
 // KEYCODE.C
 int				key_handler(int keycode, t_global *global);
+int				key_release(int keycode, t_global *global);
 int				move_mouse(int x, int y, t_global *global);
+void			execute_move(t_global *global, t_control *control);
 
 // CHECK_ARGS.C
 // bool		is_dir(char *arg);
