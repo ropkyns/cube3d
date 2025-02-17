@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:01 by romain            #+#    #+#             */
-/*   Updated: 2025/02/14 12:10:35 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:06:46 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(int argc, char **argv)
 	global = ft_calloc(1, sizeof(t_global));
 	init_map_struct(global);
 	if (argc != 2)
-		return (print_error(PROBLEM_ARGUMENTS), 1);
+		return (free_all(global), print_error(PROBLEM_ARGUMENTS), 1);
 	if (!test_map(argv[1], global))
-		return (1);
+		return (free_all(global), 1);
 	if (!ft_launch_game(global))
-		return (1);
+		return (free_all(global), 1);
 	return (0);
 }
