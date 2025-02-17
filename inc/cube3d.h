@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/14 18:07:54 by palu             ###   ########.fr       */
+/*   Updated: 2025/02/17 09:40:52 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ typedef struct s_global
 	t_map		*map;
 	t_player	*player;
 	t_win		*win;
-	t_ray		*ray;
+	// t_ray		*ray;
 	t_image		*img[5];
 
 }				t_global;
@@ -197,7 +197,7 @@ void			img_pix_put(t_global *global, int x, int y, int color);
 // FREE.C
 int				free_all(t_global *global);
 void			free_tab(char **tab);
-int				win_close(t_global *data);
+void			free_ray(t_ray *ray);
 
 // INIT_ALL.C
 void			init_map_struct(t_global *global);

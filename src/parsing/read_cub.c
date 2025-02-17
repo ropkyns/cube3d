@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/07 15:35:47 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:09:15 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static bool	get_color_code(char *line, t_map *map)
 			if (i == 2)
 				color[i][ft_strlen(color[i]) - 1] = '\0';
 			if (!ft_isdigit_str(color[i]))
-				return (false);
-			code[i] = atoi(color[i]);
+				return (free(color), free(code), false);
+			code[i] = ft_atoi(color[i]);
 			if (code[i] > 255 || code[i] < 0)
-				return (false);
+				return (free(color), free(code), false);
 		}
 		if (ft_strncmp(line, "C ", 2) == 0 && !map->c_code)
 		{
@@ -76,11 +76,11 @@ static bool	get_color_code(char *line, t_map *map)
 			map->f_code = code;
 		}
 		else
-			return (false);
+			return (free(color), free(code), false);
 	}
 	else
-		return (false);
-	return (true);
+		return (free(color), false);
+	return (free(color), free(code), true);
 }
 
 char	**maploc(int fd, int count_line)
@@ -125,7 +125,10 @@ bool	get_map(t_map *map, int fd, char *path)
 	close(fd);
 	fd = open(path, O_RDONLY);
 	while (map->gnl_count-- > 1)
+	{
 		line = get_next_line(fd);
+		free(line);
+	}
 	map->map_tab = maploc(fd, count_line);
 	if (!map->map_tab)
 		return (false);
@@ -147,6 +150,7 @@ bool	read_file(t_map *map, char *map_path)
 		map->gnl_count++;
 		while (ft_strcmp(line, "\n") == 0)
 		{
+			free(line);
 			line = get_next_line(fd);
 			map->gnl_count++;
 		}
@@ -154,6 +158,7 @@ bool	read_file(t_map *map, char *map_path)
 			line = &line[1];
 		if (!get_path(line, map) && !get_color_code(line, map))
 			return (print_error(INVALID_INFO), false);
+		free(line);
 	}
 	if (!get_map(map, fd, map_path))
 		return (print_error(INVALID_INFO), false);

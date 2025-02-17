@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/10 11:03:27 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:19:50 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool	ft_resize_map(t_global *global)
 
 	i = 0;
 	j = 0;
-	if (map_size(global, global->map->map_tab, i, j) == false)
+	if (!map_size(global, global->map->map_tab, i, j))
 		return (print_error(INCORRECT_PLAYER), false);
 	while (global->map->map_tab[i])
 	{

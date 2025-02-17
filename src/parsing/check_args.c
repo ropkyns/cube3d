@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:44:26 by paulmart          #+#    #+#             */
-/*   Updated: 2025/01/31 13:13:02 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:18:22 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	test_map(char *argv, t_global *global)
 		return (false);
 	}
 	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+	{
+		print_error(OPEN_FAILED);
+		return (false);
+	}
 	result = read(fd, &test, 1);
 	if (result <= 0)
 	{
@@ -42,12 +47,13 @@ int	test_map(char *argv, t_global *global)
 			print_error(EMPTY_FILE);
 		else if (result < 0)
 			print_error(INVALID_INPUT);
+		close(fd);
 		return (false);
 	}
+	close(fd);
 	if (!read_file(global->map, argv))
 		return (false);
 	if (!ft_resize_map(global))
 		return (false);
-	close(fd);
 	return (true);
 }
