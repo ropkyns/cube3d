@@ -3,37 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/17 16:09:50 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:15:21 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
+static void	set_path(t_map *map, char *line, int dir)
+{
+	int		i;
+
+	i = -1;
+	while (line[++i] && is_space(line[i]))
+		;
+	line[strlen(line) - 1] = '\0';
+	if (dir == WALL_N)
+		map->no_path = ft_strdup(line + i);
+	else if (dir == WALL_S)
+		map->so_path = ft_strdup(line + i);
+	else if (dir == WALL_E)
+		map->ea_path = ft_strdup(line + i);
+	else if (dir == WALL_W)
+		map->we_path = ft_strdup(line + i);
+}
+
 static bool	get_path(char *line, t_map *map)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0 && !map->no_path)
-	{
-		map->no_path = ft_strdup(line + 3);
-		map->no_path[ft_strlen(map->no_path) - 1] = '\0';
-	}
+		set_path(map, line + 3, WALL_N);
 	else if (ft_strncmp(line, "SO ", 3) == 0 && !map->so_path)
-	{
-		map->so_path = ft_strdup(line + 3);
-		map->so_path[ft_strlen(map->so_path) - 1] = '\0';
-	}
+		set_path(map, line + 3, WALL_S);
 	else if (ft_strncmp(line, "WE ", 3) == 0 && !map->we_path)
-	{
-		map->we_path = ft_strdup(line + 3);
-		map->we_path[ft_strlen(map->we_path) - 1] = '\0';
-	}
+		set_path(map, line + 3, WALL_W);
 	else if (ft_strncmp(line, "EA ", 3) == 0 && !map->ea_path)
-	{
-		map->ea_path = ft_strdup(line + 3);
-		map->ea_path[ft_strlen(map->ea_path) - 1] = '\0';
-	}
+		set_path(map, line + 3, WALL_E);
 	else
 		return (false);
 	return (true);
@@ -55,13 +61,20 @@ static bool	get_color_code(char *line, t_map *map)
 	int		*code;
 	int		i;
 
+	i = 0;
+	while (line[i] && is_space(line[i]))
+		i++;
 	if (ft_strncmp(line, "C ", 2) != 0 && ft_strncmp(line, "F ", 2) != 0)
 		return (false);
 	code = (int *)malloc(sizeof(int) * 3);
 	if (!code)
 		return (false);
-	i = -1;
-	color = ft_split(line + 2, ',');
+	i++;
+	printf("line : %si : %d\n", line, i);
+	while (line[i] && is_space(line[i]))
+		i++;
+	printf("%d", i);
+	color = ft_split(line + i, ',');
 	if (!color[3])
 	{
 		while (++i <= 2)
@@ -79,7 +92,7 @@ static bool	get_color_code(char *line, t_map *map)
 		else if (ft_strncmp(line, "F ", 2) == 0 && !map->f_code)
 			map->f_code = code;
 		else
-			return (free(color), free(code), false);
+			return (free_color(color), free(code), false);
 	}
 	else
 		return (free_color(color), free(code), false);
