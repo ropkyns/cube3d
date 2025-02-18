@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 15:56:23 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:35:00 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,9 @@ bool	map_size(t_global *global, char **array, int i, int j)
 		j = -1;
 		while (array[i][++j])
 		{
-			if (is_valid_char(array[i][j], "NSEW"))
+			if (is_valid_char(array[i][j], "NSEW") && nbr_player == 0)
 			{
 				nbr_player += 1;
-				if (nbr_player > 1)
-					return (false);
 				start_player_pos(global, array[i][j], i, j);
 			}
 		}
@@ -74,6 +72,31 @@ bool	map_size(t_global *global, char **array, int i, int j)
 		return (false);
 	global->map->height_map = i;
 	global->map->lenght_map = tmp;
+	return (true);
+}
+
+static bool	check_line(t_map *map)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	while (map->map_tab[++i])
+	{
+		j = -1;
+		while (map->map_tab[i][++j])
+		{
+			if ((i == 0 || i == map->height_map - 1) && !is_valid_char(map->map_tab[i][j], " 1\n"))
+				return (false);
+			else if ((i != 0 || i != map->height_map) && !is_valid_char(map->map_tab[i][j], " 01NSEW\n"))
+				return (false);
+			if (map->map_tab[i][j] == ' ')
+				if (!flood_fill(map, i, j))
+					return (false);
+			// ft_printf("%d, %d\n", i, j);
+		}
+	}
 	return (true);
 }
 
@@ -97,13 +120,11 @@ bool	ft_resize_map(t_global *global)
 		}
 		i++;
 	}
-	if (!ft_wall_error(global))
-	{
-		print_error(INVALID_INFO);
-		return (false);
-	}
+	if (!check_line(global->map))
+		return (print_error(INVALID_INFO), false);
 	return (true);
 }
+
 
 char	*ft_resize_line(char *map, int size)
 {

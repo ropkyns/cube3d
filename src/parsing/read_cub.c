@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/18 14:15:21 by palu             ###   ########.fr       */
+/*   Updated: 2025/02/18 18:37:37 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,8 @@ static bool	get_color_code(char *line, t_map *map)
 	code = (int *)malloc(sizeof(int) * 3);
 	if (!code)
 		return (false);
-	i++;
-	printf("line : %si : %d\n", line, i);
 	while (line[i] && is_space(line[i]))
 		i++;
-	printf("%d", i);
 	color = ft_split(line + i, ',');
 	if (!color[3])
 	{

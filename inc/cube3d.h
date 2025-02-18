@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/17 17:37:00 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:42:45 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ typedef struct s_map
 	int			*f_code;
 	int			gnl_count;
 
+	int			ff;
+
 }				t_map;
 
 typedef struct s_image
@@ -196,9 +198,10 @@ bool			check_str(char *str, char *valid);
 char			**maploc(int fd, int count_line);
 
 // WALL_ERROR.C
-bool			check_line(char **line, int y, int x, int size_y);
-bool			correct_line(t_global *global, int y, int x);
-bool			ft_wall_error(t_global *global);
+// bool			check_line(char **line, int y, int x, int size_y);
+// bool			correct_line(t_global *global, int y, int x);
+// bool			ft_wall_error(t_global *global);
+bool			flood_fill(t_map *map, int x, int y);
 
 // RAYCASTING.C
 void			raycasting(t_global *glob, t_ray *ray);
