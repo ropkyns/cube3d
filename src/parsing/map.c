@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/18 19:35:00 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:11:11 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	map_size(t_global *global, char **array, int i, int j)
 		j = -1;
 		while (array[i][++j])
 		{
-			if (is_valid_char(array[i][j], "NSEW") && nbr_player == 0)
+			if (is_valid_char(array[i][j], "NSEW"))
 			{
 				nbr_player += 1;
 				start_player_pos(global, array[i][j], i, j);
