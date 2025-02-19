@@ -6,13 +6,13 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/19 09:25:24 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:43:33 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
-void	execute_move(t_global	*global, t_control *control)
+void	execute_move(t_global *global, t_control *control)
 {
 	if (control->forward == 1)
 		move_forward(global, global->player->dir->x * global->player->speed,
@@ -28,16 +28,14 @@ void	execute_move(t_global	*global, t_control *control)
 			global->player->plan_vect->y * global->player->speed);
 	if ((control->rotation_left == 1 && (global->player->direction == 'N'
 				|| global->player->direction == 'S'))
-		|| (control->rotation_right == 1
-			&& (global->player->direction == 'E'
+		|| (control->rotation_right == 1 && (global->player->direction == 'E'
 				|| global->player->direction == 'W')))
-		rotate(global->player, -global->player->rotation_speed);
+		rotate(global->player, global->player->rotation_speed);
 	if ((control->rotation_left == 1 && (global->player->direction == 'E'
 				|| global->player->direction == 'W'))
-		|| (control->rotation_right == 1
-			&& (global->player->direction == 'N'
+		|| (control->rotation_right == 1 && (global->player->direction == 'N'
 				|| global->player->direction == 'S')))
-		rotate(global->player, global->player->rotation_speed);
+		rotate(global->player, -global->player->rotation_speed);
 }
 
 int	key_handler(int keycode, t_global *global)
@@ -89,9 +87,9 @@ int	move_mouse(int x, int y, t_global *global)
 	else
 	{
 		if (x > (int)(WIN_LENGHT / 1.2))
-			rotate(global->player, -global->player->rotation_speed / 3);
-		else if (x < WIN_LENGHT / 6)
 			rotate(global->player, global->player->rotation_speed / 3);
+		else if (x < WIN_LENGHT / 6)
+			rotate(global->player, -global->player->rotation_speed / 3);
 	}
 	return (0);
 }
