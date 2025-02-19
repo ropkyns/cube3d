@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/18 18:37:37 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:22:36 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,39 +94,6 @@ static bool	get_color_code(char *line, t_map *map)
 	else
 		return (free_color(color), free(code), false);
 	return (free_color(color), true);
-}
-
-bool	get_map(t_map *map, int fd, char *path)
-{
-	char	*line;
-	int		count_line;
-
-	count_line = 0;
-	line = get_next_line(fd);
-	while (ft_strcmp(line, "\n") == 0)
-	{
-		free(line);
-		line = get_next_line(fd);
-		map->gnl_count++;
-	}
-	while (line != NULL && ft_strcmp(line, "\n") != 0)
-	{
-		free(line);
-		count_line++;
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-	fd = open(path, O_RDONLY);
-	while (map->gnl_count-- > 1)
-	{
-		line = get_next_line(fd);
-		free(line);
-	}
-	map->map_tab = maploc(fd, count_line);
-	if (!map->map_tab)
-		return (false);
-	return (true);
 }
 
 bool	read_file(t_map *map, char *map_path)

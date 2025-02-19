@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:04:36 by paulmart          #+#    #+#             */
-/*   Updated: 2025/02/17 18:10:50 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:34:29 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ void	init_game_stat(t_global *global)
 {
 	global->win->lenght_win = WIN_LENGHT;
 	global->win->height_win = WIN_HEIGHT;
-	global->player->speed = 0.05;
-	global->player->rotation_speed = 0.03;
+	global->player->speed = 0.04;
+	global->player->rotation_speed = 0.02;
+}
+
+void	set_player_stat(t_player *player, double dir_y, double p_x, double p_y)
+{
+	player->dir->y = dir_y;
+	player->plan_vect->x = p_x;
+	player->plan_vect->y = p_y;
 }

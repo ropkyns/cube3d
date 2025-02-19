@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 17:58:15 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:25:24 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ void	execute_move(t_global	*global, t_control *control)
 		move_right(global, global->player->plan_vect->x * global->player->speed,
 			global->player->plan_vect->y * global->player->speed);
 	if ((control->rotation_left == 1 && (global->player->direction == 'N'
-				|| global->player->direction == 'S')) || (control->rotation_right == 1
+				|| global->player->direction == 'S'))
+		|| (control->rotation_right == 1
 			&& (global->player->direction == 'E'
 				|| global->player->direction == 'W')))
 		rotate(global->player, -global->player->rotation_speed);
 	if ((control->rotation_left == 1 && (global->player->direction == 'E'
-				|| global->player->direction == 'W')) || (control->rotation_right == 1 
-			&& (global->player->direction == 'N' || global->player->direction == 'S')))
+				|| global->player->direction == 'W'))
+		|| (control->rotation_right == 1
+			&& (global->player->direction == 'N'
+				|| global->player->direction == 'S')))
 		rotate(global->player, global->player->rotation_speed);
 }
 

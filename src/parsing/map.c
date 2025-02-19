@@ -6,18 +6,11 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/18 20:11:11 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:31:30 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
-
-void	set_player_stat(t_player *player, double dir_y, double p_x, double p_y)
-{
-	player->dir->y = dir_y;
-	player->plan_vect->x = p_x;
-	player->plan_vect->y = p_y;
-}
 
 void	start_player_pos(t_global *global, char direction, int i, int j)
 {
@@ -87,14 +80,15 @@ static bool	check_line(t_map *map)
 		j = -1;
 		while (map->map_tab[i][++j])
 		{
-			if ((i == 0 || i == map->height_map - 1) && !is_valid_char(map->map_tab[i][j], " 1\n"))
+			if ((i == 0 || i == map->height_map - 1)
+				&& !is_valid_char(map->map_tab[i][j], " 1\n"))
 				return (false);
-			else if ((i != 0 || i != map->height_map) && !is_valid_char(map->map_tab[i][j], " 01NSEW\n"))
+			else if ((i != 0 || i != map->height_map)
+				&& !is_valid_char(map->map_tab[i][j], " 01NSEW\n"))
 				return (false);
 			if (map->map_tab[i][j] == ' ')
 				if (!flood_fill(map, i, j))
 					return (false);
-			// ft_printf("%d, %d\n", i, j);
 		}
 	}
 	return (true);
@@ -124,7 +118,6 @@ bool	ft_resize_map(t_global *global)
 		return (print_error(INVALID_INFO), false);
 	return (true);
 }
-
 
 char	*ft_resize_line(char *map, int size)
 {
