@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:40:47 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/19 11:43:33 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:51:41 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	execute_move(t_global *global, t_control *control)
 			global->player->plan_vect->y * global->player->speed);
 	if ((control->rotation_left == 1 && (global->player->direction == 'N'
 				|| global->player->direction == 'S'))
-		|| (control->rotation_right == 1 && (global->player->direction == 'E'
+		|| (control->rotation_left == 1 && (global->player->direction == 'E'
 				|| global->player->direction == 'W')))
-		rotate(global->player, global->player->rotation_speed);
-	if ((control->rotation_left == 1 && (global->player->direction == 'E'
+		rotate(global->player, -global->player->rotation_speed);
+	if ((control->rotation_right == 1 && (global->player->direction == 'E'
 				|| global->player->direction == 'W'))
 		|| (control->rotation_right == 1 && (global->player->direction == 'N'
 				|| global->player->direction == 'S')))
-		rotate(global->player, -global->player->rotation_speed);
+		rotate(global->player, global->player->rotation_speed);
 }
 
 int	key_handler(int keycode, t_global *global)
