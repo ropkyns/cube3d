@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/19 10:13:22 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:27:29 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_path(t_map *map, char *line, int dir)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	while (line[++i] && is_space(line[i]))
@@ -101,6 +101,7 @@ bool	read_file(t_map *map, char *map_path)
 {
 	char	*line;
 	int		fd;
+	char	*keep_line;
 	int		n;
 
 	fd = open(map_path, O_RDONLY);
@@ -115,9 +116,10 @@ bool	read_file(t_map *map, char *map_path)
 			line = get_next_line(fd);
 			map->gnl_count++;
 		}
-		while (is_space(line[0]) && line[1])
-			line = &line[1];
-		if (!get_path(line, map) && !get_color_code(line, map))
+		keep_line = line;
+		while (is_space(keep_line[0]) && keep_line[1])
+			keep_line++;
+		if (!get_path(keep_line, map) && !get_color_code(keep_line, map))
 			return (close(fd), free(line), print_error(INVALID_INFO), false);
 		free(line);
 	}

@@ -6,7 +6,7 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/18 15:47:16 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:21:36 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*read_xpm(t_global *global, char *path, int n)
 	if (!img)
 	{
 		print_error(ERROR_INIT_IMG);
-		return (NULL);
+		return (free_all(global), NULL);
 	}
 	return (img);
 }
