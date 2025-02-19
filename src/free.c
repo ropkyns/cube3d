@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:44:18 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/17 18:00:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:51:07 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,3 @@ int	free_all(t_global *global)
 	free(global);
 	exit(0);
 }
-
-// int	win_close(t_global *global)
-// {
-// 	ft_printf("Close the window\n");
-// 	free_all(global);
-// 	exit(0);
-// }

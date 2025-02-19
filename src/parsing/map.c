@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/19 09:31:30 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:12:47 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ static bool	check_line(t_map *map)
 		j = -1;
 		while (map->map_tab[i][++j])
 		{
+			if ((j == 0 || j == map->lenght_map)
+				&& !is_valid_char(map->map_tab[i][j], " 1"))
+				return (false);
 			if ((i == 0 || i == map->height_map - 1)
 				&& !is_valid_char(map->map_tab[i][j], " 1\n"))
 				return (false);
@@ -115,7 +118,7 @@ bool	ft_resize_map(t_global *global)
 		i++;
 	}
 	if (!check_line(global->map))
-		return (print_error(INVALID_INFO), false);
+		return (print_error(INVALID_MAP), false);
 	return (true);
 }
 

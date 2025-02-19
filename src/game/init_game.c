@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:39:42 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/19 10:21:36 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:18:28 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ static void	ft_init_img(t_global *global)
 int	ft_launch_game(t_global *global)
 {
 	init_game_stat(global);
+	if (global->player->speed < 0 || global->player->speed > 1)
+		return (print_error(SPEED_LIMIT), false);
+	if ((global->win->height_win > 1080 || global->win->height_win <= 0)
+		|| (global->win->lenght_win > 1920 || global->win->lenght_win <= 0))
+		return (print_error(SIZE_WINDOW), false);
 	global->win->mlx_ptr = mlx_init();
 	if (!global->win->mlx_ptr)
 		return (print_error(ERROR_MLX), false);

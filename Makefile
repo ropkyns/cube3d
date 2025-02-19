@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 15:04:48 by palu              #+#    #+#              #
-#    Updated: 2025/02/19 09:22:57 by rbouquet         ###   ########.fr        #
+#    Updated: 2025/02/19 17:19:21 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CYAN		= "\033[36m"
 WHITE		= "\033[37m"
 SILENT		=	> /dev/null 2>&1
 
-NAME		=	cube3D
+NAME		=	cub3D
 
 RM			= rm -f
 

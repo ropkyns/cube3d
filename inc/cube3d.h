@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/18 16:42:45 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:22:21 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-# define WIN_LENGHT 1280
-# define WIN_HEIGHT 720
-# define PI 3.14159265359
+# define WIN_LENGHT 1920
+# define WIN_HEIGHT 1080
+# define SPEED 0.05
+# define ROTATION 0.03
 
 enum			e_error
 {
@@ -41,6 +42,9 @@ enum			e_error
 	EMPTY_FILE,
 	INVALID_INPUT,
 	ERROR_INIT_IMG,
+	INVALID_MAP,
+	SPEED_LIMIT,
+	SIZE_WINDOW,
 };
 
 enum			e_img
@@ -59,7 +63,6 @@ typedef struct s_pos
 
 typedef struct s_player
 {
-	// PLAYER
 	t_pos		*pos;
 	t_pos		*dir;
 	t_pos		*plan_vect;
@@ -93,20 +96,17 @@ typedef struct s_win
 	void		*mlx_win;
 	int			height_win;
 	int			lenght_win;
-
 }				t_win;
 
 typedef struct s_map
 {
 	char		**map_tab;
 
-	// MAP_STAT
 	int			line_map;
 	int			column_map;
 	int			height_map;
 	int			lenght_map;
 
-	// MAP_CUB
 	char		*no_path;
 	char		*so_path;
 	char		*ea_path;
@@ -114,9 +114,7 @@ typedef struct s_map
 	int			*c_code;
 	int			*f_code;
 	int			gnl_count;
-
 	int			ff;
-
 }				t_map;
 
 typedef struct s_image
@@ -128,7 +126,6 @@ typedef struct s_image
 	int			endian;
 	int			height;
 	int			width;
-
 }				t_image;
 
 typedef struct s_control
@@ -189,6 +186,8 @@ void			set_player_stat(t_player *player, double dir_y, double p_x,
 // READ_CUB.C
 bool			read_file(t_map *map, char *map_path);
 bool			get_map(t_map *map, int fd, char *path);
+bool			get_color_code(char *line, t_map *map);
+void			free_color(char **color);
 
 // UTILS.C
 bool			is_valid_char(char c, char *valid_char);
@@ -198,9 +197,6 @@ bool			check_str(char *str, char *valid);
 char			**maploc(int fd, int count_line);
 
 // WALL_ERROR.C
-// bool			check_line(char **line, int y, int x, int size_y);
-// bool			correct_line(t_global *global, int y, int x);
-// bool			ft_wall_error(t_global *global);
 bool			flood_fill(t_map *map, int x, int y);
 
 // RAYCASTING.C

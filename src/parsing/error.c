@@ -3,17 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:28:54 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/03 09:43:16 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:56:40 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube3d.h"
 
+static void	print_error2(int error)
+{
+	if (error == INVALID_MAP)
+		ft_putstr_fd("Error\nInvalid map\n", 2);
+	else if (error == SPEED_LIMIT)
+		ft_putstr_fd("Error\nToo fast as fuck boy (or too slow)\n", 2);
+	else if (error == SIZE_WINDOW)
+		ft_putstr_fd("Error\nInvalid size for window\n", 2);
+}
+
 void	print_error(int error)
 {
+	print_error2(error);
 	if (error == PROBLEM_ARGUMENTS)
 		ft_putstr_fd("Error\nNot enough or too many arguments.\n", 2);
 	else if (error == OPEN_FAILED)
@@ -36,4 +47,6 @@ void	print_error(int error)
 		ft_putstr_fd("Error\nEmpty file\n", 2);
 	else if (error == ERROR_INIT_IMG)
 		ft_putstr_fd("Error\nPath texture is incorrect\n", 2);
+	else if (error == INVALID_MAP)
+		ft_putstr_fd("Error\nInvalid map\n", 2);
 }
