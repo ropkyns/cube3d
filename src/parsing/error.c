@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:28:54 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/19 16:56:40 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:00:35 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	print_error(int error)
 		ft_putstr_fd("Error\nInvalid character on map\n", 2);
 	else if (error == INVALID_INFO)
 		ft_putstr_fd("Error\nInvalid informations in the .cub files\n", 2);
-	else if (error == INCORRECT_PLAYER)
-		ft_putstr_fd("Error\nIncorrect number of player\n", 2);
 	else if (error == ERROR_MALLOC)
 		ft_putstr_fd("Error\nError Malloc\n", 2);
 	else if (error == ERROR_MLX)
@@ -47,6 +45,4 @@ void	print_error(int error)
 		ft_putstr_fd("Error\nEmpty file\n", 2);
 	else if (error == ERROR_INIT_IMG)
 		ft_putstr_fd("Error\nPath texture is incorrect\n", 2);
-	else if (error == INVALID_MAP)
-		ft_putstr_fd("Error\nInvalid map\n", 2);
 }

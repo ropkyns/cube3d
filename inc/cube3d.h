@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/19 17:22:21 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:00:45 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-# define WIN_LENGHT 1920
-# define WIN_HEIGHT 1080
+# define WIN_LENGHT 1280
+# define WIN_HEIGHT 720
 # define SPEED 0.05
 # define ROTATION 0.03
 
@@ -35,7 +35,6 @@ enum			e_error
 	OPEN_FAILED,
 	INVALID_CHARACTER_ON_MAP,
 	INVALID_INFO,
-	INCORRECT_PLAYER,
 	ERROR_MALLOC,
 	ERROR_MLX,
 	BAD_EXTENSION,

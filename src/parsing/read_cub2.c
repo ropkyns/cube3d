@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 09:22:16 by rbouquet          #+#    #+#             */
-/*   Updated: 2025/02/19 15:55:06 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:05:20 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool	get_color_code(char *line, t_map *map)
 static int	get_map_size(t_map *map, int count_line, char *line, int fd)
 {
 	line = get_next_line(fd);
-	while (ft_strcmp(line, "\n") == 0)
+	while (line && ft_strcmp(line, "\n") == 0)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -93,7 +93,7 @@ bool	get_map(t_map *map, int fd, char *path)
 
 	count_line = 0;
 	count_line = get_map_size(map, count_line, line, fd);
-	if (count_line == -1)
+	if (count_line <= 0)
 		return (false);
 	close(fd);
 	fd = open(path, O_RDONLY);
