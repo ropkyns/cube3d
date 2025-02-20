@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/20 16:00:23 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:01:03 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static bool	check_line(t_map *map)
 		j = -1;
 		while (map->map_tab[i][++j])
 		{
-			if ((j == 0 || j == map->lenght_map)
+			if ((j == 0 || j == map->lenght_map - 2)
 				&& !is_valid_char(map->map_tab[i][j], " 1"))
 				return (false);
 			if ((i == 0 || i == map->height_map - 1)
@@ -140,8 +140,8 @@ char	*ft_resize_line(char *map, int size)
 		tmp_line[i] = ' ';
 		i++;
 	}
-	tmp_line[i++] = '\n';
-	tmp_line[i] = '\0';
+	tmp_line[i] = '\n';
+	tmp_line[++i] = '\0';
 	if (map)
 	{
 		free(map);

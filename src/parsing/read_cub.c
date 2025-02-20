@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:10:47 by palu              #+#    #+#             */
-/*   Updated: 2025/02/19 15:43:43 by paulmart         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:42:23 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_color(char **color)
 static bool	find_path(char *keep_line, t_map *map, int fd, char *line)
 {
 	while (is_space(keep_line[0]) && keep_line[1])
-			keep_line++;
+		keep_line++;
 	if (!get_path(keep_line, map) && !get_color_code(keep_line, map))
 	{
 		while (keep_line)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/20 16:00:45 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:05:02 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-# define WIN_LENGHT 1280
-# define WIN_HEIGHT 720
+# define WIN_LENGHT 1920
+# define WIN_HEIGHT 1080
 # define SPEED 0.05
 # define ROTATION 0.03
 
