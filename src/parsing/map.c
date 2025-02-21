@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:30:42 by romain            #+#    #+#             */
-/*   Updated: 2025/02/20 17:01:03 by palu             ###   ########.fr       */
+/*   Updated: 2025/02/21 09:21:13 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static bool	check_line(t_map *map)
 			if ((i == 0 || i == map->height_map - 1)
 				&& !is_valid_char(map->map_tab[i][j], " 1\n"))
 				return (false);
-			else if ((i != 0 || i != map->height_map)
+			else if ((i != 0 || i != map->height_map - 1)
 				&& !is_valid_char(map->map_tab[i][j], " 01NSEW\n"))
 				return (false);
 			if (map->map_tab[i][j] == ' ')
