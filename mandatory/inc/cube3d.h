@@ -6,15 +6,15 @@
 /*   By: rbouquet <rbouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:31:05 by romain            #+#    #+#             */
-/*   Updated: 2025/02/21 09:31:56 by rbouquet         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:19:34 by rbouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include "../lib/libft/libft.h"
-# include "../lib/mlx_linux/mlx.h"
+# include "../../lib/libft/libft.h"
+# include "../../lib/mlx_linux/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
